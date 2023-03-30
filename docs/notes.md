@@ -1,0 +1,6 @@
+# Notes
+
+[ThreeJS Crash Course](https://www.youtube.com/watch?v=YK1Sw_hnm58)
+[Project setup code snippet:](https://chriscourses.com/courses/threejs-game/videos/project-setup)
+[GitHub source code:](https://github.com/chriscourses/threejs-game)
+[Demo:](https://chriscourses.github.io/threejs-game/)
