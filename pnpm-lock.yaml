@@ -5,12 +5,14 @@ specifiers:
   prettier: ^2.8.7
   three: ^0.151.0
   three-addons: ^1.2.0
+  three-full: ^28.0.2
   typescript: ^4.9.5
   vite: ^4.2.0
 
 dependencies:
   three: 0.151.0
   three-addons: 1.2.0
+  three-full: 28.0.2
 
 devDependencies:
   '@types/three': 0.150.0
@@ -358,6 +360,10 @@ packages:
     resolution: {integrity: sha512-tmPGLtcsDb0Bt6bVU82y9KX0rdAzizr7t2rFjBecWq4pvfGMY3l+yCfvntGYeZGJ9cjsli10cHSWHsN1pTy4mA==}
     dependencies:
       three: 0.92.0
+    dev: false
+
+  /three-full/28.0.2:
+    resolution: {integrity: sha512-KJKj47qYcRbT6efPQ5kV5/uxiIq9lX0tf/eK2B6KarqRUY8JcF+vN9R5r+6wZMekBrO/sGD6gEQkKUcCN7G7tA==}
     dev: false
 
   /three/0.151.0:
