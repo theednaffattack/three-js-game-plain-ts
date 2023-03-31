@@ -1,6 +1,8 @@
 import "./style.css";
 import * as THREE from "three";
-// import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
+
+import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
+import { Box } from "./Box";
 
 /**Camera with perspective projection. */
 interface PerspectiveCameraArgs {
@@ -42,26 +44,33 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 document.body.appendChild(renderer.domElement);
 
-// const controls = new OrbitControls(camera, renderer.domElement);
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-// const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
+const controls = new OrbitControls(camera, renderer.domElement);
+
+const cube = new Box({
+    height: 1,
+    width: 1,
+    depth: 1,
+    velocity: { x: 0, y: -0.01, z: 0 },
+});
 cube.castShadow = true;
 scene.add(cube);
 
-const ground = new THREE.Mesh(
-    new THREE.BoxGeometry(5, 0.5, 10),
-    new THREE.MeshStandardMaterial({ color: 0x0000ff })
-);
+const ground = new Box({
+    width: 5,
+    height: 0.5,
+    depth: 10,
+    color: "#0000FF",
+    position: { x: 0, y: -2, z: 0 },
+});
+
 ground.receiveShadow = true;
-ground.position.y = -2;
 scene.add(ground);
 
 const light = new THREE.DirectionalLight(
     lightConfig.color,
     lightConfig.intensity
 );
+
 light.position.z = 3;
 light.position.y = 2;
 light.castShadow = true;
@@ -72,8 +81,8 @@ camera.position.z = 5;
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    cube.update(ground);
+    // cube.position.y += -0.01;
 }
 
 animate();
