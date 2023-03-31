@@ -77,14 +77,6 @@ scene.add(light);
 
 camera.position.z = 5;
 
-console.log("BOTTOM OF CUBE", cube.bottom);
-console.log("TOP OF GROUND", ground.position.y + ground.height / 2);
-console.log("TOP OF GROUND 2", ground.top);
-console.log("WHAT", {
-    positionY: ground.position.y,
-    height: ground.height / 2,
-});
-
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
