@@ -59,6 +59,10 @@ export class Box extends THREE.Mesh {
         // Make our Box constantly fall
         this.velocity.y += -this.gravity;
 
+        this.applyGravity(ground);
+    }
+
+    applyGravity(ground: Box) {
         // Collision detection
         // bottom of cube collides w/ top of ground
         if (this.bottom + this.velocity.y <= ground.top) {
