@@ -2,11 +2,11 @@
 
 ## Feature checklist
 
-[ ] Project setup
-[ ] Materials and lighting
-[ ] Shadows
-[ ] Gravity
-[ ] Movement
-[ ] Full collision detection
-[ ] Enemy spawning
-[ ] End game scenario
+[x] Project setup<br>
+[ ] Materials and lighting<br>
+[ ] Shadows<br>
+[ ] Gravity<br>
+[ ] Movement<br>
+[ ] Full collision detection<br>
+[ ] Enemy spawning<br>
+[ ] End game scenario<br>
