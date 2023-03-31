@@ -14,6 +14,8 @@ export class Box extends THREE.Mesh {
     gravity: number;
     /**The height of our box. (y-axis) */
     height: number;
+    /**Speed with which to affect velocity. */
+    speed: number;
     /**This represents the top coordinate of our Box. */
     top: number;
     /**The velocity of our object. By default velocity on all axes (x,y,z) is set to zero */
@@ -50,19 +52,21 @@ export class Box extends THREE.Mesh {
         this.bottom = this.position.y - this.height / 2;
         this.top = this.position.y + this.height / 2;
         this.gravity = 0.005;
+        this.speed = 0.01;
     }
 
     update(ground: Box) {
         this.bottom = this.position.y - this.height / 2;
         this.top = this.position.y + this.height / 2;
 
-        // Make our Box constantly fall
-        this.velocity.y += -this.gravity;
-
+        this.position.x += this.velocity.x;
+        this.position.z += this.velocity.z;
         this.applyGravity(ground);
     }
 
     applyGravity(ground: Box) {
+        // Make our Box constantly fall
+        this.velocity.y += -this.gravity;
         // Collision detection
         // bottom of cube collides w/ top of ground
         if (this.bottom + this.velocity.y <= ground.top) {
