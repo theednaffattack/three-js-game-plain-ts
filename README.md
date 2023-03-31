@@ -3,7 +3,7 @@
 ## Feature checklist
 
 [x] Project setup<br>
-[ ] Materials and lighting<br>
+[x] Materials and lighting<br>
 [ ] Shadows<br>
 [ ] Gravity<br>
 [ ] Movement<br>
