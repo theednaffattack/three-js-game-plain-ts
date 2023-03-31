@@ -4,7 +4,7 @@
 
 [x] Project setup<br>
 [x] Materials and lighting<br>
-[ ] Shadows<br>
+[x] Shadows<br>
 [ ] Gravity<br>
 [ ] Movement<br>
 [ ] Full collision detection<br>

@@ -37,6 +37,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const renderer = new THREE.WebGL1Renderer();
+renderer.shadowMap.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight);
 
 document.body.appendChild(renderer.domElement);
@@ -46,14 +47,14 @@ const geometry = new THREE.BoxGeometry(1, 1, 1);
 // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
-
+cube.castShadow = true;
 scene.add(cube);
 
 const ground = new THREE.Mesh(
     new THREE.BoxGeometry(5, 0.5, 10),
     new THREE.MeshStandardMaterial({ color: 0x0000ff })
 );
-
+ground.receiveShadow = true;
 ground.position.y = -2;
 scene.add(ground);
 
@@ -63,6 +64,7 @@ const light = new THREE.DirectionalLight(
 );
 light.position.z = 3;
 light.position.y = 2;
+light.castShadow = true;
 scene.add(light);
 
 camera.position.z = 5;
