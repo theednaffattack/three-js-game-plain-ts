@@ -76,12 +76,152 @@ light.castShadow = true;
 scene.add(light);
 
 camera.position.z = 5;
+interface PressedState {
+    pressed: boolean;
+}
+interface Keys {
+    a: PressedState;
+    d: PressedState;
+    w: PressedState;
+    s: PressedState;
+    ArrowUp: PressedState;
+    ArrowDown: PressedState;
+    ArrowLeft: PressedState;
+    ArrowRight: PressedState;
+}
+const keys: Keys = {
+    a: { pressed: false },
+    d: { pressed: false },
+    w: { pressed: false },
+    s: { pressed: false },
+    ArrowUp: { pressed: false },
+    ArrowDown: { pressed: false },
+    ArrowLeft: { pressed: false },
+    ArrowRight: { pressed: false },
+};
 
+// BEGIN Functions
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
+
+    // Movement code
+    // Set initial velocity to zero
+    cube.velocity.x = 0;
+    cube.velocity.z = 0;
+
+    // Monitor keys object to apply velocity
+    if (keys.a.pressed || keys.ArrowLeft.pressed) {
+        cube.velocity.x = -cube.speed;
+    } else if (keys.d.pressed || keys.ArrowRight.pressed) {
+        cube.velocity.x = cube.speed;
+    }
+
+    if (keys.w.pressed || keys.ArrowUp.pressed) {
+        cube.velocity.z = -cube.speed;
+    } else if (keys.s.pressed || keys.ArrowDown.pressed) {
+        cube.velocity.z = cube.speed;
+    }
     cube.update(ground);
-    // cube.position.y += -0.01;
 }
 
+function handleKeyDown(evt: KeyboardEvent) {
+    const controlKeys = [
+        "KeyA",
+        "KeyS",
+        "KeyD",
+        "KeyW",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+    ];
+
+    if (controlKeys.includes(evt.code)) {
+        // Only move if it's a game control key
+        switch (evt.code) {
+            case "KeyA":
+                keys.a.pressed = true;
+                break;
+            case "KeyD":
+                keys.d.pressed = true;
+                break;
+            case "KeyW":
+                keys.w.pressed = true;
+                break;
+            case "KeyS":
+                keys.s.pressed = true;
+                break;
+            case "ArrowLeft":
+                keys.ArrowLeft.pressed = true;
+                break;
+            case "ArrowRight":
+                keys.ArrowRight.pressed = true;
+                break;
+            case "ArrowUp":
+                keys.ArrowUp.pressed = true;
+                break;
+            case "ArrowDown":
+                keys.ArrowDown.pressed = true;
+                break;
+
+            default:
+                break;
+        }
+    }
+}
+
+function handleKeyUp(evt: KeyboardEvent) {
+    const controlKeys = [
+        "KeyA",
+        "KeyS",
+        "KeyD",
+        "KeyW",
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+    ];
+
+    if (controlKeys.includes(evt.code)) {
+        // Only move if it's a game control key
+        switch (evt.code) {
+            case "KeyA":
+                keys.a.pressed = false;
+                break;
+            case "KeyD":
+                keys.d.pressed = false;
+                break;
+            case "KeyW":
+                keys.w.pressed = false;
+                break;
+            case "KeyS":
+                keys.s.pressed = false;
+                break;
+            case "ArrowLeft":
+                keys.ArrowLeft.pressed = false;
+                break;
+            case "ArrowRight":
+                keys.ArrowRight.pressed = false;
+                break;
+            case "ArrowUp":
+                keys.ArrowUp.pressed = false;
+                break;
+            case "ArrowDown":
+                keys.ArrowDown.pressed = false;
+                break;
+
+            default:
+                break;
+        }
+    }
+}
+// END Functions
+
+// BEGIN Event Listeners
+window.addEventListener("keydown", handleKeyDown);
+window.addEventListener("keyup", handleKeyUp);
+// END Event Listeners
+
+// Kick-off our game
 animate();
