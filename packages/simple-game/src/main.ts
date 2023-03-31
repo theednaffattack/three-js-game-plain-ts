@@ -45,22 +45,31 @@ document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
-const cube = new Box({ height: 1, width: 1, depth: 1 });
+const cube = new Box({
+    height: 1,
+    width: 1,
+    depth: 1,
+    velocity: { x: 0, y: -0.01, z: 0 },
+});
 cube.castShadow = true;
 scene.add(cube);
 
-const ground = new THREE.Mesh(
-    new THREE.BoxGeometry(5, 0.5, 10),
-    new THREE.MeshStandardMaterial({ color: 0x0000ff })
-);
+const ground = new Box({
+    width: 5,
+    height: 0.5,
+    depth: 10,
+    color: "#0000FF",
+    position: { x: 0, y: -2, z: 0 },
+});
+
 ground.receiveShadow = true;
-ground.position.y = -2;
 scene.add(ground);
 
 const light = new THREE.DirectionalLight(
     lightConfig.color,
     lightConfig.intensity
 );
+
 light.position.z = 3;
 light.position.y = 2;
 light.castShadow = true;
@@ -68,9 +77,18 @@ scene.add(light);
 
 camera.position.z = 5;
 
+console.log("BOTTOM OF CUBE", cube.bottom);
+console.log("TOP OF GROUND", ground.position.y + ground.height / 2);
+console.log("TOP OF GROUND 2", ground.top);
+console.log("WHAT", {
+    positionY: ground.position.y,
+    height: ground.height / 2,
+});
+
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
+    cube.update(ground);
     // cube.position.y += -0.01;
 }
 
