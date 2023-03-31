@@ -14,19 +14,26 @@ interface PerspectiveCameraArgs {
     far?: number | undefined;
 }
 
-const config: PerspectiveCameraArgs = {
+interface DirectionalLightArgs {
+    color?: THREE.ColorRepresentation | undefined;
+    intensity?: number | undefined;
+}
+
+const camConfig: PerspectiveCameraArgs = {
     fov: 75,
     aspect: window.innerWidth / window.innerHeight,
     near: 0.1,
     far: 1000,
 };
 
+const lightConfig: DirectionalLightArgs = { color: "#0xffffff", intensity: 1 };
+
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-    config.fov,
-    config.aspect,
-    config.near,
-    config.far
+    camConfig.fov,
+    camConfig.aspect,
+    camConfig.near,
+    camConfig.far
 );
 
 const renderer = new THREE.WebGL1Renderer();
@@ -41,6 +48,13 @@ const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
 const cube = new THREE.Mesh(geometry, material);
 
 scene.add(cube);
+
+const light = new THREE.DirectionalLight(
+    lightConfig.color,
+    lightConfig.intensity
+);
+light.position.z = 3;
+scene.add(light);
 
 camera.position.z = 5;
 
