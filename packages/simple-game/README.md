@@ -5,7 +5,7 @@
 [x] Project setup<br>
 [x] Materials and lighting<br>
 [x] Shadows<br>
-[ ] Gravity<br>
+[x] Gravity<br>
 [ ] Movement<br>
 [ ] Full collision detection<br>
 [ ] Enemy spawning<br>
