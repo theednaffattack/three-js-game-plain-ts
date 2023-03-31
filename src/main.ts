@@ -62,6 +62,7 @@ const light = new THREE.DirectionalLight(
     lightConfig.intensity
 );
 light.position.z = 3;
+light.position.y = 2;
 scene.add(light);
 
 camera.position.z = 5;
