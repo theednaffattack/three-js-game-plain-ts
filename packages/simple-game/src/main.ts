@@ -1,6 +1,6 @@
 import "./style.css";
 import * as THREE from "three";
-import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
+// import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
 
 /**Camera with perspective projection. */
 interface PerspectiveCameraArgs {
@@ -42,7 +42,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 document.body.appendChild(renderer.domElement);
 
-const controls = new OrbitControls(camera, renderer.domElement);
+// const controls = new OrbitControls(camera, renderer.domElement);
 const geometry = new THREE.BoxGeometry(1, 1, 1);
 // const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
 const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
