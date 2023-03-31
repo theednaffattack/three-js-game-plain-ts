@@ -4,3 +4,5 @@
 [Project setup code snippet:](https://chriscourses.com/courses/threejs-game/videos/project-setup)
 [GitHub source code:](https://github.com/chriscourses/threejs-game)
 [Demo:](https://chriscourses.github.io/threejs-game/)
+
+[ThreeJS types issue](https://github.com/Itee/three-full/issues/12)

@@ -1,28 +1,24 @@
 lockfileVersion: 5.4
 
-importers:
+specifiers:
+  '@types/three': ^0.150.0
+  prettier: ^2.8.7
+  three: ^0.151.0
+  three-addons: ^1.2.0
+  three-full: ^28.0.2
+  typescript: ^4.9.5
+  vite: ^4.2.0
 
-  .:
-    specifiers: {}
+dependencies:
+  three: 0.151.0
+  three-addons: 1.2.0
+  three-full: 28.0.2
 
-  packages/simple-game:
-    specifiers:
-      '@types/three': ^0.150.0
-      prettier: ^2.8.7
-      three: ^0.151.0
-      three-addons: ^1.2.0
-      three-full: ^28.0.2
-      typescript: ^4.9.5
-      vite: ^4.2.0
-    dependencies:
-      three: 0.151.2
-      three-addons: 1.2.0
-      three-full: 28.0.2
-    devDependencies:
-      '@types/three': 0.150.0
-      prettier: 2.8.7
-      typescript: 4.9.5
-      vite: 4.2.1
+devDependencies:
+  '@types/three': 0.150.0
+  prettier: 2.8.7
+  typescript: 4.9.5
+  vite: 4.2.1
 
 packages:
 
@@ -370,8 +366,8 @@ packages:
     resolution: {integrity: sha512-KJKj47qYcRbT6efPQ5kV5/uxiIq9lX0tf/eK2B6KarqRUY8JcF+vN9R5r+6wZMekBrO/sGD6gEQkKUcCN7G7tA==}
     dev: false
 
-  /three/0.151.2:
-    resolution: {integrity: sha512-tGaLRP2H6++tj2JumHD25slhFAx0C619rl6G6Utjq7JTrDGJwDxpu+J2XpnYIUMfEmhNvIFDQJfp79JtKmNBWw==}
+  /three/0.151.0:
+    resolution: {integrity: sha512-ZvjJbNhZ/t0L8I36tc1I1ZP9j1q42ANE9WTlR+P3lZfOzlSfNa5VfR1rZRHNyjn/ZPP4kU7xGI1v8QSJOpxE4w==}
     dev: false
 
   /three/0.92.0:
