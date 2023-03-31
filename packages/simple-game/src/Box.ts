@@ -49,20 +49,25 @@ export class Box extends THREE.Mesh {
 
         this.bottom = this.position.y - this.height / 2;
         this.top = this.position.y + this.height / 2;
-        this.gravity = 0.01;
+        this.gravity = 0.005;
     }
 
     update(ground: Box) {
         this.bottom = this.position.y - this.height / 2;
         this.top = this.position.y + this.height / 2;
 
+        // Make our Box constantly fall
         this.velocity.y += -this.gravity;
 
-        this.position.y += this.velocity.y;
         // Collision detection
         // bottom of cube, top of ground
         if (this.bottom + this.velocity.y <= ground.top) {
+            // This should bounce us by flipping our velocity
             this.velocity.y = -this.velocity.y;
+        } else {
+            // If we're not colliding with the ground,
+            // keep adding velocity to our position
+            this.position.y += this.velocity.y;
         }
     }
 }
