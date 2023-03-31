@@ -10,6 +10,8 @@ export class Box extends THREE.Mesh {
     color: THREE.ColorRepresentation;
     /**The depth of our box. (z-axis) */
     depth: number;
+    /**Value representing our rate of fall (or bounce) */
+    gravity: number;
     /**The height of our box. (y-axis) */
     height: number;
     /**This represents the top coordinate of our Box. */
@@ -47,11 +49,14 @@ export class Box extends THREE.Mesh {
 
         this.bottom = this.position.y - this.height / 2;
         this.top = this.position.y + this.height / 2;
+        this.gravity = 0.01;
     }
 
     update(ground: Box) {
         this.bottom = this.position.y - this.height / 2;
         this.top = this.position.y + this.height / 2;
+
+        this.velocity.y += -this.gravity;
 
         this.position.y += this.velocity.y;
         // Collision detection
