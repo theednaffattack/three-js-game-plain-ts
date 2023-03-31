@@ -1,6 +1,7 @@
 import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
+import { Box } from "./Box";
 
 /**Camera with perspective projection. */
 interface PerspectiveCameraArgs {
@@ -43,10 +44,8 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
-const geometry = new THREE.BoxGeometry(1, 1, 1);
-// const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
+
+const cube = new Box({ height: 1, width: 1, depth: 1 });
 cube.castShadow = true;
 scene.add(cube);
 
@@ -72,8 +71,7 @@ camera.position.z = 5;
 function animate() {
     requestAnimationFrame(animate);
     renderer.render(scene, camera);
-    // cube.rotation.x += 0.01;
-    // cube.rotation.y += 0.01;
+    // cube.position.y += -0.01;
 }
 
 animate();
