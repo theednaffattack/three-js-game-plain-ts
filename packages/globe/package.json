@@ -1,0 +1,26 @@
+{
+  "name": "globe",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "serve:dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": true,
+    "singleQuote": false
+  },
+  "devDependencies": {
+    "@types/three": "^0.150.0",
+    "typescript": "^4.9.5",
+    "vite": "^4.2.1"
+  },
+  "dependencies": {
+    "three": "^0.151.0",
+    "three-full": "^28.0.2"
+  }
+}
