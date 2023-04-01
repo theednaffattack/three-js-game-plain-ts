@@ -100,6 +100,19 @@ const keys: Keys = {
     ArrowRight: { pressed: false },
 };
 
+const enemy = new Box({
+    color: "red",
+    depth: 1,
+    height: 1,
+    position: { x: 0, y: 0, z: -4 },
+    velocity: { x: 0, y: 0, z: 0.01 },
+    width: 1,
+});
+enemy.castShadow = true;
+scene.add(enemy);
+
+const enemies = [enemy];
+
 // BEGIN Functions
 function animate() {
     requestAnimationFrame(animate);
@@ -122,7 +135,12 @@ function animate() {
     } else if (keys.s.pressed || keys.ArrowDown.pressed) {
         cube.velocity.z = cube.speed;
     }
+
     cube.update(ground);
+
+    enemies.forEach((enemy) => {
+        enemy.update(ground);
+    });
 }
 
 function handleKeyDown(evt: KeyboardEvent) {
