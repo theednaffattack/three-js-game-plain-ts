@@ -11,7 +11,7 @@ const camera = new THREE.PerspectiveCamera(
     config.cam.far
 );
 
-const renderer = new THREE.WebGL1Renderer();
+const renderer = new THREE.WebGL1Renderer({ antialias: true });
 
 // Set the size of our 3D object to window width and height
 renderer.setSize(innerWidth, innerHeight);
