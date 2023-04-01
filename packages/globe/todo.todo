@@ -2,8 +2,9 @@
 ✔ Map a texture onto sphere @done(23-04-01 13:15)
 ✔ Sharpen rendering @done(23-04-01 13:48)
 ☐ Alter texture shader for atmosphere effect
-    ☐ Create first vertex shader
-    ☐ Install vite-plugin-string
+    ✔ Create first vertex shader @done(23-04-01 14:03)
+    ✔ Install vite-plugin-string @done(23-04-01 14:04)
+    ✔ Install vite-plugin-glsl @done(23-04-01 14:19)
     ☐ Create first fragment shader
     ☐ Add texture to gragment shader using uniforms
     ☐ Transfer vertexUV to gragment shader using varying
