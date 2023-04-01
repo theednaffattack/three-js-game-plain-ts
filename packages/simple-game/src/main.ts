@@ -16,9 +16,9 @@ interface PerspectiveCameraArgs {
     far?: number | undefined;
 }
 
-interface DirectionalLightArgs {
-    color?: THREE.ColorRepresentation | undefined;
-    intensity?: number | undefined;
+interface LightArgs {
+    color: THREE.ColorRepresentation;
+    intensity: number;
 }
 
 const camConfig: PerspectiveCameraArgs = {
@@ -28,7 +28,7 @@ const camConfig: PerspectiveCameraArgs = {
     far: 1000,
 };
 
-const lightConfig: DirectionalLightArgs = { color: "#ffffff", intensity: 1 };
+const lightConfig: LightArgs = { color: "#ffffff", intensity: 1 };
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -72,6 +72,10 @@ scene.add(ground);
 const light = new THREE.DirectionalLight(
     lightConfig.color,
     lightConfig.intensity
+);
+
+scene.add(
+    new THREE.AmbientLight(lightConfig.color, lightConfig.intensity - 0.5)
 );
 
 light.position.z = 3;
