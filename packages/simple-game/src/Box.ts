@@ -49,8 +49,11 @@ export class Box extends THREE.Mesh {
         this.velocity = velocity;
         this.position.set(position.x, position.y, position.z);
 
-        this.bottom = this.position.y - this.height / 2;
         this.top = this.position.y + this.height / 2;
+        this.bottom = this.position.y - this.height / 2;
+        this.left = this.position.x - this.width / 2;
+        this.right = this.position.x + this.width / 2;
+
         this.gravity = 0.005;
         this.speed = 0.01;
     }
