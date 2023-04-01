@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
 import vertexShader from "./shaders/vertex.glsl";
+import fragmentShader from "./shaders/fragment.glsl";
 
 import "./style.css";
 import { animate } from "./animate";
@@ -42,7 +43,7 @@ const sphere = new THREE.Mesh(
     ),
     new THREE.ShaderMaterial({
         vertexShader,
-        // fragmentShader:
+        fragmentShader,
     })
 );
 
