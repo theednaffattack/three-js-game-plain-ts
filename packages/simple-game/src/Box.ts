@@ -31,6 +31,8 @@ export class Box extends THREE.Mesh {
     velocity: { x: number; y: number; z: number };
     /**The width of our box. (x-axis) */
     width: number;
+    /**Optional acceleration increase. */
+    zAcceleration: boolean;
     constructor({
         color = "#00FF00",
         depth,
@@ -38,6 +40,7 @@ export class Box extends THREE.Mesh {
         position = { x: 0, y: 0, z: 0 },
         velocity = { x: 0, y: 0, z: 0 },
         width,
+        zAcceleration = false,
     }: {
         color?: THREE.ColorRepresentation;
         depth: number;
@@ -45,6 +48,7 @@ export class Box extends THREE.Mesh {
         position?: { x: number; y: number; z: number };
         velocity?: { y: number; x: number; z: number };
         width: number;
+        zAcceleration: boolean;
     }) {
         super(
             new THREE.BoxGeometry(width, height, depth),
@@ -68,6 +72,8 @@ export class Box extends THREE.Mesh {
 
         this.gravity = 0.005;
         this.speed = 0.05;
+
+        this.zAcceleration = zAcceleration;
     }
 
     updateSides() {
@@ -83,6 +89,10 @@ export class Box extends THREE.Mesh {
 
     update(ground: Box) {
         this.updateSides();
+
+        if (this.zAcceleration) {
+            this.velocity.z += 0.0003;
+        }
 
         this.position.x += this.velocity.x;
         this.position.z += this.velocity.z;
