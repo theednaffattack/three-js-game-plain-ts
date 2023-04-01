@@ -44,6 +44,11 @@ const sphere = new THREE.Mesh(
     new THREE.ShaderMaterial({
         vertexShader,
         fragmentShader,
+        uniforms: {
+            globeTexture: {
+                value: new THREE.TextureLoader().load("./img/globe3.jpeg"),
+            },
+        },
     })
 );
 
