@@ -1,4 +1,4 @@
-import { PerspectiveCameraArgs } from "shared/types";
+import { PerspectiveCameraArgs, SphereGeometryArgs } from "shared/types";
 
 const cameraConfig: PerspectiveCameraArgs = {
     fov: 75,
@@ -7,4 +7,10 @@ const cameraConfig: PerspectiveCameraArgs = {
     far: 1000,
 };
 
-export const config = { cam: cameraConfig };
+const sphereGeometry: SphereGeometryArgs = {
+    radius: 5,
+    widthSegments: 50,
+    heightSegments: 50,
+};
+
+export const config = { cam: cameraConfig, sphere: sphereGeometry };
