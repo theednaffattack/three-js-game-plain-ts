@@ -58,10 +58,10 @@ cube.castShadow = true;
 scene.add(cube);
 
 const ground = new Box({
-    width: 5,
+    width: 10,
     height: 0.5,
-    depth: 10,
-    color: "#0000FF",
+    depth: 50,
+    color: "#0369A1",
     position: { x: 0, y: -2, z: 0 },
     zAcceleration: false,
 });
