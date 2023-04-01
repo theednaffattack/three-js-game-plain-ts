@@ -38,6 +38,9 @@ const camera = new THREE.PerspectiveCamera(
     camConfig.far
 );
 
+const cameraPos = { x: 4.61, y: 2.74, z: 8 };
+camera.position.set(cameraPos.x, cameraPos.y, cameraPos.z);
+
 const container = document.getElementById("app");
 const renderer = new THREE.WebGL1Renderer({ alpha: true, antialias: true });
 renderer.shadowMap.enabled = true;
