@@ -104,23 +104,14 @@ const keys: Keys = {
     ArrowRight: { pressed: false },
 };
 
-const enemy = new Box({
-    color: "red",
-    depth: 1,
-    height: 1,
-    position: { x: 0, y: 0, z: -4 },
-    velocity: { x: 0, y: 0, z: 0.01 },
-    width: 1,
-    zAcceleration: true,
-});
-enemy.castShadow = true;
-scene.add(enemy);
-
-const enemies = [enemy];
+const enemies: Box[] = [];
 
 let isPaused = false;
 const pauseButton = document.getElementById("pause-button");
 pauseButton?.addEventListener("click", handlePauseButton);
+
+let frames = 0;
+let spawnRate = 200;
 
 // BEGIN Functions
 function animate() {
@@ -153,6 +144,27 @@ function animate() {
             cancelAnimationFrame(animationId);
         }
     });
+
+    if (frames % spawnRate === 0) {
+        if (spawnRate > 20) {
+            spawnRate -= 20;
+        }
+
+        const enemy = new Box({
+            color: "red",
+            depth: 1,
+            height: 1,
+            position: { x: (Math.random() - 0.5) * 5, y: 0, z: -4 },
+            velocity: { x: 0, y: 0, z: 0.01 },
+            width: 1,
+            zAcceleration: true,
+        });
+        enemy.castShadow = true;
+        scene.add(enemy);
+        enemies.push(enemy);
+    }
+
+    frames++;
 }
 
 function handlePauseButton(_evt: MouseEvent) {
