@@ -107,7 +107,8 @@ export class Box extends THREE.Mesh {
         // bottom of cube collides w/ top of ground
         if (boxCollision({ box1: this, box2: ground })) {
             // This adds friction
-            this.velocity.y *= 0.8;
+            const friction = 0.5;
+            this.velocity.y *= friction;
             // This should bounce us by flipping our velocity
             this.velocity.y = -this.velocity.y;
         } else {
