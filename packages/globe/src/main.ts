@@ -1,13 +1,14 @@
 import "./style.css";
 import * as THREE from "three";
 import { animate } from "./animate";
+import { config } from "./config";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-    75,
-    innerWidth / innerHeight,
-    0.1,
-    1000
+    config.cam.fov,
+    config.cam.aspect,
+    config.cam.near,
+    config.cam.far
 );
 
 const renderer = new THREE.WebGL1Renderer();
@@ -28,7 +29,13 @@ const sphere = new THREE.Mesh(
     new THREE.MeshBasicMaterial({ color: 0xff0000 })
 );
 
-console.log(sphere);
+scene.add(sphere);
+
+camera.position.z = 15;
+
+animate({ renderer, scene, camera });
+
+// DELETE BELOW
 
 // function animate() {
 //     const animationId = requestAnimationFrame(animate);
@@ -37,4 +44,3 @@ console.log(sphere);
 // }
 
 // animate();
-animate({ renderer, scene, camera });
