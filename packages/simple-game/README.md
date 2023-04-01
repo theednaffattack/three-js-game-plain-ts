@@ -9,4 +9,4 @@
 [x] Movement<br>
 [x] Full collision detection<br>
 [x] End game scenario<br>
-[ ] Enemy spawning<br>
+[x] Enemy spawning<br>
