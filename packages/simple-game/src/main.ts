@@ -39,7 +39,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const container = document.getElementById("app");
-const renderer = new THREE.WebGL1Renderer({ alpha: true });
+const renderer = new THREE.WebGL1Renderer({ alpha: true, antialias: true });
 renderer.shadowMap.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight);
 
