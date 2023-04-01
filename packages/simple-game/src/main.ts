@@ -158,7 +158,7 @@ function animate() {
             color: "red",
             depth: 1,
             height: 1,
-            position: { x: (Math.random() - 0.5) * 5, y: 0, z: -20 },
+            position: { x: (Math.random() - 0.5) * 10, y: 0, z: -20 },
             velocity: { x: 0, y: 0, z: 0.01 },
             width: 1,
             zAcceleration: true,
