@@ -1,5 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
+import vertexShader from "./shaders/vertex.glsl";
+import fragmentShader from "./shaders/fragment.glsl";
 
 import "./style.css";
 import { animate } from "./animate";
@@ -39,9 +41,14 @@ const sphere = new THREE.Mesh(
         config.sphere.widthSegments,
         config.sphere.heightSegments
     ),
-    new THREE.MeshBasicMaterial({
-        // color: 0xff0000
-        map: new THREE.TextureLoader().load("./img/globe3.jpeg"),
+    new THREE.ShaderMaterial({
+        vertexShader,
+        fragmentShader,
+        uniforms: {
+            globeTexture: {
+                value: new THREE.TextureLoader().load("./img/globe3.jpeg"),
+            },
+        },
     })
 );
 
