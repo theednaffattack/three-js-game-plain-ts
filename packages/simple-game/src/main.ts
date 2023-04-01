@@ -219,7 +219,7 @@ function handleKeyDown(evt: KeyboardEvent) {
                 keys.ArrowDown.pressed = true;
                 break;
             case "Space":
-                cube.velocity.y = 0.1;
+                cube.velocity.y = 0.15;
                 break;
 
             default:
