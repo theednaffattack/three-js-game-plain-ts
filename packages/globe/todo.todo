@@ -5,10 +5,10 @@
     ✔ Create first vertex shader @done(23-04-01 14:03)
     ✔ Install vite-plugin-string @done(23-04-01 14:04)
     ✔ Install vite-plugin-glsl @done(23-04-01 14:19)
-    ☐ Create first fragment shader
-    ☐ Add texture to gragment shader using uniforms
-    ☐ Transfer vertexUV to gragment shader using varying
-    ☐ Add shade of blue using vertexNormal
+    ✔ Create first fragment shader @done(23-04-01 15:35)
+    ✔ Add texture to fragment shader using uniforms @done(23-04-01 15:35)
+    ✔ Transfer vertexUV to gragment shader using varying @done(23-04-01 15:35)
+    ✔ Add shade of blue using vertexNormal @done(23-04-01 15:46)
 ☐ Add extended atmosphere with second shader
 ☐ Add mouse movement interaction
 ☐ Add background stars
