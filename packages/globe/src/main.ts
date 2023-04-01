@@ -32,7 +32,10 @@ const sphere = new THREE.Mesh(
         config.sphere.widthSegments,
         config.sphere.heightSegments
     ),
-    new THREE.MeshBasicMaterial({ color: 0xff0000 })
+    new THREE.MeshBasicMaterial({
+        // color: 0xff0000
+        map: new THREE.TextureLoader().load("./img/globe.jpeg"),
+    })
 );
 
 // Place the sphere within our scene
