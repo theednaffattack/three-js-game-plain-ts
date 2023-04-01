@@ -122,6 +122,8 @@ let isPaused = false;
 const pauseButton = document.getElementById("pause-button");
 pauseButton?.addEventListener("click", handlePauseButton);
 
+let frames = 0;
+
 // BEGIN Functions
 function animate() {
     const animationId = requestAnimationFrame(animate);
@@ -153,6 +155,8 @@ function animate() {
             cancelAnimationFrame(animationId);
         }
     });
+
+    frames++;
 }
 
 function handlePauseButton(_evt: MouseEvent) {
