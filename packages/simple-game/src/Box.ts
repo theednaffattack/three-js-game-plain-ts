@@ -18,6 +18,14 @@ export class Box extends THREE.Mesh {
     speed: number;
     /**This represents the top coordinate of our Box. */
     top: number;
+    /**This represents the left coordinate of our Box. */
+    left: number;
+    /**This represents the right coordinate of our Box. */
+    right: number;
+    /**This represents the front coordinate of our Box. */
+    front: number;
+    /**This represents the back coordinate of our Box. */
+    back: number;
     /**The velocity of our object. By default velocity on all axes (x,y,z) is set to zero */
     velocity: { x: number; y: number; z: number };
     /**The width of our box. (x-axis) */
@@ -54,16 +62,30 @@ export class Box extends THREE.Mesh {
         this.left = this.position.x - this.width / 2;
         this.right = this.position.x + this.width / 2;
 
+        this.front = this.position.z + this.depth / 2;
+        this.back = this.position.z - this.depth / 2;
+
         this.gravity = 0.005;
         this.speed = 0.01;
     }
 
-    update(ground: Box) {
+    updateSides() {
+        this.left = this.position.x - this.width / 2;
+        this.right = this.position.x + this.width / 2;
+
         this.bottom = this.position.y - this.height / 2;
         this.top = this.position.y + this.height / 2;
 
+        this.front = this.position.z + this.depth / 2;
+        this.back = this.position.z - this.depth / 2;
+    }
+
+    update(ground: Box) {
+        this.updateSides();
+
         this.position.x += this.velocity.x;
         this.position.z += this.velocity.z;
+
         this.applyGravity(ground);
     }
 
@@ -72,7 +94,7 @@ export class Box extends THREE.Mesh {
         this.velocity.y += -this.gravity;
         // Collision detection
         // bottom of cube collides w/ top of ground
-        if (this.bottom + this.velocity.y <= ground.top) {
+        if (boxCollision({ box1: this, box2: ground })) {
             // This adds friction
             this.velocity.y *= 0.8;
             // This should bounce us by flipping our velocity
@@ -83,4 +105,13 @@ export class Box extends THREE.Mesh {
             this.position.y += this.velocity.y;
         }
     }
+}
+
+function boxCollision({ box1, box2 }: { box1: Box; box2: Box }) {
+    const xCollision = box1.right >= box2.left && box1.left <= box2.right;
+    const zCollision = box1.front >= box2.back && box1.back <= box2.front;
+    const yCollision =
+        box1.bottom + box1.velocity.y <= box2.top && box1.top >= box2.bottom;
+
+    return xCollision && yCollision && zCollision;
 }
