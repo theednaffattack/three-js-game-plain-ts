@@ -78,8 +78,8 @@ scene.add(
     new THREE.AmbientLight(lightConfig.color, lightConfig.intensity - 0.5)
 );
 
-light.position.z = 3;
-light.position.y = 2;
+light.position.y = 3;
+light.position.z = 1;
 light.castShadow = true;
 scene.add(light);
 
