@@ -1,5 +1,5 @@
-☐ Create a sphere
-☐ Map a texture onto sphere
+✔ Create a sphere @done(23-04-01 13:14)
+✔ Map a texture onto sphere @done(23-04-01 13:15)
 ☐ Sharpen rendering
 ☐ Alter texture shader for atmosphere effect
 ☐ Create first vertex shader
