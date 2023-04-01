@@ -6,7 +6,7 @@
 [x] Materials and lighting<br>
 [x] Shadows<br>
 [x] Gravity<br>
-[ ] Movement<br>
-[ ] Full collision detection<br>
+[x] Movement<br>
+[x] Full collision detection<br>
 [ ] Enemy spawning<br>
 [ ] End game scenario<br>

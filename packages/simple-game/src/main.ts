@@ -1,6 +1,6 @@
 import "./style.css";
 import * as THREE from "three";
-// import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
+import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
 import { Box } from "./Box";
 
 /**Camera with perspective projection. */
@@ -43,7 +43,7 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 
 document.body.appendChild(renderer.domElement);
 
-// const controls = new OrbitControls(camera, renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
 
 const cube = new Box({
     height: 1,
