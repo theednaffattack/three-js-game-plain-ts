@@ -66,7 +66,7 @@ export class Box extends THREE.Mesh {
         this.back = this.position.z - this.depth / 2;
 
         this.gravity = 0.005;
-        this.speed = 0.01;
+        this.speed = 0.05;
     }
 
     updateSides() {
