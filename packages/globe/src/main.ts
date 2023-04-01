@@ -41,7 +41,7 @@ const sphere = new THREE.Mesh(
         config.sphere.heightSegments
     ),
     new THREE.ShaderMaterial({
-        // vertexShader: vertexShader,
+        vertexShader,
         // fragmentShader:
     })
 );
