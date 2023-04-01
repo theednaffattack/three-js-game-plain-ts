@@ -18,6 +18,9 @@ const renderer = new THREE.WebGL1Renderer({ antialias: true });
 // Set the size of our 3D object to window width and height
 renderer.setSize(innerWidth, innerHeight);
 
+// Set the pixel ratio to match our device for greater clarity
+renderer.setPixelRatio(window.devicePixelRatio);
+
 const appDiv = document.getElementById("app");
 
 if (!appDiv) {
@@ -38,7 +41,7 @@ const sphere = new THREE.Mesh(
     ),
     new THREE.MeshBasicMaterial({
         // color: 0xff0000
-        map: new THREE.TextureLoader().load("./img/globe.jpeg"),
+        map: new THREE.TextureLoader().load("./img/globe3.jpeg"),
     })
 );
 
