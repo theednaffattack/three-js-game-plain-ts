@@ -1,5 +1,7 @@
-import "./style.css";
 import * as THREE from "three";
+import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
+
+import "./style.css";
 import { animate } from "./animate";
 import { config } from "./config";
 
@@ -24,6 +26,8 @@ if (!appDiv) {
 
 // Add our 3D object to the DOM
 appDiv.appendChild(renderer.domElement);
+
+const controls = new OrbitControls(camera, renderer.domElement);
 
 // Create a sphere
 const sphere = new THREE.Mesh(
