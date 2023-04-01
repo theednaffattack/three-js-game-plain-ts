@@ -1,4 +1,5 @@
 import * as THREE from "three";
+import { boxCollision } from "./box-collision";
 
 /**
  * Class Box extends THREE.Mesh and adds 'depth', 'height', and 'width' properties.
@@ -30,6 +31,8 @@ export class Box extends THREE.Mesh {
     velocity: { x: number; y: number; z: number };
     /**The width of our box. (x-axis) */
     width: number;
+    /**Optional acceleration increase. */
+    zAcceleration: boolean;
     constructor({
         color = "#00FF00",
         depth,
@@ -37,6 +40,7 @@ export class Box extends THREE.Mesh {
         position = { x: 0, y: 0, z: 0 },
         velocity = { x: 0, y: 0, z: 0 },
         width,
+        zAcceleration = false,
     }: {
         color?: THREE.ColorRepresentation;
         depth: number;
@@ -44,6 +48,7 @@ export class Box extends THREE.Mesh {
         position?: { x: number; y: number; z: number };
         velocity?: { y: number; x: number; z: number };
         width: number;
+        zAcceleration: boolean;
     }) {
         super(
             new THREE.BoxGeometry(width, height, depth),
@@ -67,6 +72,8 @@ export class Box extends THREE.Mesh {
 
         this.gravity = 0.005;
         this.speed = 0.05;
+
+        this.zAcceleration = zAcceleration;
     }
 
     updateSides() {
@@ -82,6 +89,10 @@ export class Box extends THREE.Mesh {
 
     update(ground: Box) {
         this.updateSides();
+
+        if (this.zAcceleration) {
+            this.velocity.z += 0.0003;
+        }
 
         this.position.x += this.velocity.x;
         this.position.z += this.velocity.z;
@@ -105,13 +116,4 @@ export class Box extends THREE.Mesh {
             this.position.y += this.velocity.y;
         }
     }
-}
-
-function boxCollision({ box1, box2 }: { box1: Box; box2: Box }) {
-    const xCollision = box1.right >= box2.left && box1.left <= box2.right;
-    const zCollision = box1.front >= box2.back && box1.back <= box2.front;
-    const yCollision =
-        box1.bottom + box1.velocity.y <= box2.top && box1.top >= box2.bottom;
-
-    return xCollision && yCollision && zCollision;
 }

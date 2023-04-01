@@ -2,6 +2,7 @@ import "./style.css";
 import * as THREE from "three";
 import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
 import { Box } from "./Box";
+import { boxCollision } from "./box-collision";
 
 /**Camera with perspective projection. */
 interface PerspectiveCameraArgs {
@@ -27,7 +28,7 @@ const camConfig: PerspectiveCameraArgs = {
     far: 1000,
 };
 
-const lightConfig: DirectionalLightArgs = { color: "#0xffffff", intensity: 1 };
+const lightConfig: DirectionalLightArgs = { color: "#ffffff", intensity: 1 };
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -37,11 +38,12 @@ const camera = new THREE.PerspectiveCamera(
     camConfig.far
 );
 
+const container = document.getElementById("app");
 const renderer = new THREE.WebGL1Renderer();
 renderer.shadowMap.enabled = true;
 renderer.setSize(window.innerWidth, window.innerHeight);
 
-document.body.appendChild(renderer.domElement);
+container?.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -50,6 +52,7 @@ const cube = new Box({
     width: 1,
     depth: 1,
     velocity: { x: 0, y: -0.01, z: 0 },
+    zAcceleration: false,
 });
 cube.castShadow = true;
 scene.add(cube);
@@ -60,6 +63,7 @@ const ground = new Box({
     depth: 10,
     color: "#0000FF",
     position: { x: 0, y: -2, z: 0 },
+    zAcceleration: false,
 });
 
 ground.receiveShadow = true;
@@ -100,9 +104,27 @@ const keys: Keys = {
     ArrowRight: { pressed: false },
 };
 
+const enemy = new Box({
+    color: "red",
+    depth: 1,
+    height: 1,
+    position: { x: 0, y: 0, z: -4 },
+    velocity: { x: 0, y: 0, z: 0.01 },
+    width: 1,
+    zAcceleration: true,
+});
+enemy.castShadow = true;
+scene.add(enemy);
+
+const enemies = [enemy];
+
+let isPaused = false;
+const pauseButton = document.getElementById("pause-button");
+pauseButton?.addEventListener("click", handlePauseButton);
+
 // BEGIN Functions
 function animate() {
-    requestAnimationFrame(animate);
+    const animationId = requestAnimationFrame(animate);
     renderer.render(scene, camera);
 
     // Movement code
@@ -122,7 +144,19 @@ function animate() {
     } else if (keys.s.pressed || keys.ArrowDown.pressed) {
         cube.velocity.z = cube.speed;
     }
+
     cube.update(ground);
+
+    enemies.forEach((enemy) => {
+        enemy.update(ground);
+        if (boxCollision({ box1: cube, box2: enemy })) {
+            cancelAnimationFrame(animationId);
+        }
+    });
+}
+
+function handlePauseButton(_evt: MouseEvent) {
+    isPaused = !isPaused;
 }
 
 function handleKeyDown(evt: KeyboardEvent) {

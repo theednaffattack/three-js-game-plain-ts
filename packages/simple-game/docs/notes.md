@@ -6,3 +6,5 @@
 [Demo:](https://chriscourses.github.io/threejs-game/)
 
 [ThreeJS types issue](https://github.com/Itee/three-full/issues/12)
+
+[Standardize Frame Rate](https://chriscourses.com/blog/standardize-your-javascript-games-framerate-for-different-monitors)
