@@ -8,11 +8,13 @@ importers:
   packages/globe:
     specifiers:
       '@types/three': ^0.150.0
+      shared: workspace:^1.0.0
       three: ^0.151.0
       three-full: ^28.0.2
       typescript: ^4.9.5
       vite: ^4.2.1
     dependencies:
+      shared: link:../shared
       three: 0.151.2
       three-full: 28.0.2
     devDependencies:
