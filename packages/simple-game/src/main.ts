@@ -188,6 +188,7 @@ function handleKeyDown(evt: KeyboardEvent) {
         "ArrowDown",
         "ArrowLeft",
         "ArrowRight",
+        "Space",
     ];
 
     if (controlKeys.includes(evt.code)) {
@@ -216,6 +217,9 @@ function handleKeyDown(evt: KeyboardEvent) {
                 break;
             case "ArrowDown":
                 keys.ArrowDown.pressed = true;
+                break;
+            case "Space":
+                cube.velocity.y = 0.1;
                 break;
 
             default:
