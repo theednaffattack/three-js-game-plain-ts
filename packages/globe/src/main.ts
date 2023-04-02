@@ -3,6 +3,9 @@ import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 
+import atmosphereVertexShader from "./shaders/atmosphereVertex.glsl";
+import atmosphereFragmentShader from "./shaders/atmosphereFragment.glsl";
+
 import "./style.css";
 import { animate } from "./animate";
 import { config } from "./config";
@@ -47,7 +50,7 @@ const sphere = new THREE.Mesh(
         fragmentShader,
         uniforms: {
             globeTexture: {
-                value: new THREE.TextureLoader().load("./img/globe3.jpeg"),
+                value: new THREE.TextureLoader().load("./img/globe.jpeg"),
             },
         },
     })
@@ -56,7 +59,7 @@ const sphere = new THREE.Mesh(
 // Place the sphere within our scene
 scene.add(sphere);
 
-// Create an atmosphere
+// Create atmosphere
 const atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(
         config.sphere.radius,
@@ -64,8 +67,10 @@ const atmosphere = new THREE.Mesh(
         config.sphere.heightSegments
     ),
     new THREE.ShaderMaterial({
-        vertexShader,
-        fragmentShader,
+        vertexShader: atmosphereVertexShader,
+        fragmentShader: atmosphereFragmentShader,
+        blending: THREE.AdditiveBlending,
+        side: THREE.BackSide,
     })
 );
 
