@@ -1,5 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
+import gsap from "gsap";
+
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 
@@ -9,6 +11,7 @@ import atmosphereFragmentShader from "./shaders/atmosphereFragment.glsl";
 import "./style.css";
 import { animate } from "./animate";
 import { config } from "./config";
+import { Mouse } from "./local-types";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -56,9 +59,6 @@ const sphere = new THREE.Mesh(
     })
 );
 
-// Place the sphere within our scene
-scene.add(sphere);
-
 // Create atmosphere
 const atmosphere = new THREE.Mesh(
     new THREE.SphereGeometry(
@@ -79,9 +79,25 @@ atmosphere.scale.set(1.1, 1.1, 1.1);
 // Place the sphere within our scene
 scene.add(atmosphere);
 
+const group = new THREE.Group();
+
+// Place the sphere within our group
+group.add(sphere);
+// Place the group within the scene
+scene.add(group);
+
 // Set camera position to be something less than
 // our sphere radius.
 camera.position.z = 15;
 
+const mouse: Mouse = { x: undefined, y: undefined };
+
 // Pass our 3D elements to the animation loop
-animate({ renderer, scene, camera, sphere });
+animate({ camera, group, gsap, mouse, renderer, scene, sphere });
+
+// BEGIN Event Listeners
+
+addEventListener("mousemove", (evt) => {
+    mouse.x = (evt.clientX / innerWidth) * 2 - 1;
+    mouse.y = (evt.clientY / innerHeight) * 2 + 1;
+});
