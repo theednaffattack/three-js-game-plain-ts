@@ -23,10 +23,11 @@ renderer.setSize(innerWidth, innerHeight);
 // Set the pixel ratio to match our device for greater clarity
 renderer.setPixelRatio(window.devicePixelRatio);
 
-const appDiv = document.getElementById("app");
+const parentId = "app";
+const appDiv = document.getElementById(parentId);
 
 if (!appDiv) {
-    throw new Error("A div with an id of 'app' is missing!");
+    throw new Error(`A div with an id of 'app' is missing!`);
 }
 
 // Add our 3D object to the DOM
