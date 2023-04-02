@@ -83,5 +83,12 @@ scene.add(atmosphere);
 // our sphere radius.
 camera.position.z = 15;
 
+const mouse: Mouse = { x: undefined, y: undefined };
+
 // Pass our 3D elements to the animation loop
-animate({ renderer, scene, camera, sphere });
+// BEGIN Event Listeners
+
+addEventListener("mousemove", (evt) => {
+    mouse.x = (evt.clientX / innerWidth) * 2 - 1;
+    mouse.y = (evt.clientY / innerHeight) * 2 + 1;
+});
