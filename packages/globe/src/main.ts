@@ -79,4 +79,4 @@ scene.add(atmosphere);
 camera.position.z = 15;
 
 // Pass our 3D elements to the animation loop
-animate({ renderer, scene, camera });
+animate({ renderer, scene, camera, sphere });
