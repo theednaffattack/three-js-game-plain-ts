@@ -1,7 +1,7 @@
 ✔ Create a sphere @done(23-04-01 13:14)
 ✔ Map a texture onto sphere @done(23-04-01 13:15)
 ✔ Sharpen rendering @done(23-04-01 13:48)
-☐ Alter texture shader for atmosphere effect
+✔ Alter texture shader for atmosphere effect @started(23-04-02 11:42) @done(23-04-02 11:42) @lasted(30s)
     ✔ Create first vertex shader @done(23-04-01 14:03)
     ✔ Install vite-plugin-string @done(23-04-01 14:04)
     ✔ Install vite-plugin-glsl @done(23-04-01 14:19)
@@ -10,6 +10,6 @@
     ✔ Transfer vertexUV to gragment shader using varying @done(23-04-01 15:35)
     ✔ Add shade of blue using vertexNormal @done(23-04-01 15:46)
 ✔ Add extended atmosphere with second shader @done(23-04-02 09:32)
-☐ Add mouse movement interaction
-☐ Add background stars
+✔ Add mouse movement interaction @done(23-04-02 11:42)
+✔ Add background stars @done(23-04-02 11:42)
 ☐ Add HTML and CSS
