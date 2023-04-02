@@ -9,7 +9,7 @@
     ✔ Add texture to fragment shader using uniforms @done(23-04-01 15:35)
     ✔ Transfer vertexUV to gragment shader using varying @done(23-04-01 15:35)
     ✔ Add shade of blue using vertexNormal @done(23-04-01 15:46)
-☐ Add extended atmosphere with second shader
+✔ Add extended atmosphere with second shader @done(23-04-02 09:32)
 ☐ Add mouse movement interaction
 ☐ Add background stars
 ☐ Add HTML and CSS
