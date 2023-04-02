@@ -1,5 +1,7 @@
 import * as THREE from "three";
 import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
+import gsap from "gsap";
+
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 
@@ -91,7 +93,7 @@ camera.position.z = 15;
 const mouse: Mouse = { x: undefined, y: undefined };
 
 // Pass our 3D elements to the animation loop
-animate({ camera, group, mouse, renderer, scene, sphere });
+animate({ camera, group, gsap, mouse, renderer, scene, sphere });
 
 // BEGIN Event Listeners
 
