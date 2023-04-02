@@ -2,16 +2,14 @@ import * as THREE from "three";
 import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
 import gsap from "gsap";
 
-import vertexShader from "./shaders/vertex.glsl";
-import fragmentShader from "./shaders/fragment.glsl";
-
-import atmosphereVertexShader from "./shaders/atmosphereVertex.glsl";
-import atmosphereFragmentShader from "./shaders/atmosphereFragment.glsl";
-
 import "./style.css";
 import { animate } from "./animate";
 import { config } from "./config";
-import { Mouse } from "./local-types";
+import type { Mouse } from "./local-types";
+import vertexShader from "./shaders/vertex.glsl";
+import fragmentShader from "./shaders/fragment.glsl";
+import atmosphereVertexShader from "./shaders/atmosphereVertex.glsl";
+import atmosphereFragmentShader from "./shaders/atmosphereFragment.glsl";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -85,6 +83,29 @@ const group = new THREE.Group();
 group.add(sphere);
 // Place the group within the scene
 scene.add(group);
+
+const starGeometry = new THREE.BufferGeometry();
+const starMaterial = new THREE.PointsMaterial({
+    color: 0xffffff,
+});
+
+const starVertices = [];
+
+for (let index = 0; index < 10_000; index++) {
+    const x = (Math.random() - 0.5) * 2_000;
+    const y = (Math.random() - 0.5) * 2_000;
+    const z = -Math.random() * 2_000;
+    starVertices.push(x, y, z);
+}
+
+starGeometry.setAttribute(
+    "position",
+    new THREE.Float32BufferAttribute(starVertices, 3)
+);
+
+const stars = new THREE.Points(starGeometry, starMaterial);
+
+scene.add(stars);
 
 // Set camera position to be something less than
 // our sphere radius.
