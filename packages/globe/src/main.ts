@@ -56,6 +56,24 @@ const sphere = new THREE.Mesh(
 // Place the sphere within our scene
 scene.add(sphere);
 
+// Create an atmosphere
+const atmosphere = new THREE.Mesh(
+    new THREE.SphereGeometry(
+        config.sphere.radius,
+        config.sphere.widthSegments,
+        config.sphere.heightSegments
+    ),
+    new THREE.ShaderMaterial({
+        vertexShader,
+        fragmentShader,
+    })
+);
+
+atmosphere.scale.set(1.1, 1.1, 1.1);
+
+// Place the sphere within our scene
+scene.add(atmosphere);
+
 // Set camera position to be something less than
 // our sphere radius.
 camera.position.z = 15;
