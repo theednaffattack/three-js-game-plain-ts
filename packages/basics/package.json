@@ -21,6 +21,7 @@
         "vite": "^4.2.0"
     },
     "dependencies": {
+        "shared": "workspace:^1.0.0",
         "three": "^0.151.0",
         "three-full": "^28.0.2"
     }

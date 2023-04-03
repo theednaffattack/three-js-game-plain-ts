@@ -9,11 +9,13 @@ importers:
     specifiers:
       '@types/three': ^0.150.0
       prettier: ^2.8.7
+      shared: workspace:^1.0.0
       three: ^0.151.0
       three-full: ^28.0.2
       typescript: ^4.9.3
       vite: ^4.2.0
     dependencies:
+      shared: link:../shared
       three: 0.151.2
       three-full: 28.0.2
     devDependencies:
@@ -66,7 +68,10 @@ importers:
       vite-plugin-glsl: 1.1.2_vite@4.2.1
 
   packages/shared:
-    specifiers: {}
+    specifiers:
+      '@types/three': ^0.150.0
+    devDependencies:
+      '@types/three': 0.150.0
 
 packages:
 
