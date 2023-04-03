@@ -38,7 +38,12 @@ const renderer = new THREE.WebGL1Renderer({
 });
 
 // Set the size of our 3D object to window width and height
-renderer.setSize(globeContainer.offsetWidth, globeContainer.offsetHeight);
+// For some reason this is always to large so subtract pixels
+// manually from what it SHOULD be, for now.
+renderer.setSize(
+    globeContainer.offsetWidth - 8,
+    globeContainer.offsetHeight - 15
+);
 
 // Set the pixel ratio to match our device for greater clarity
 renderer.setPixelRatio(window.devicePixelRatio);
