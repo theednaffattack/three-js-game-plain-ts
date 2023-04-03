@@ -21,6 +21,8 @@ html {
 
 body {
     margin: 0;
+    box-sizing: border-box;
+    background-color: #000;
 }
 
 #app {
@@ -71,12 +73,16 @@ body {
 .upper-hero-text {
     font-family: "Exo 2", sans-serif;
     text-transform: uppercase;
-    font-size: 4.5em;
+    font-size: 4em;
     line-height: 1em;
 }
 
 .hero-text {
     font-size: 1.5em;
+}
+
+.hero {
+    max-width: 600px;
 }
 /* * {
     outline: 1px solid #f00 !important;
