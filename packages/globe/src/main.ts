@@ -10,19 +10,33 @@ import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 import atmosphereVertexShader from "./shaders/atmosphereVertex.glsl";
 import atmosphereFragmentShader from "./shaders/atmosphereFragment.glsl";
+const globeContainer =
+    document.querySelector<HTMLDivElement>("#globe-container");
+if (!globeContainer) {
+    throw new Error("Can't sense a div with ID 'globe-container'!");
+}
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
     config.cam.fov,
-    config.cam.aspect,
+    globeContainer.clientWidth / globeContainer.clientHeight, // config.cam.aspect,
     config.cam.near,
     config.cam.far
 );
 
-const renderer = new THREE.WebGL1Renderer({ antialias: true });
+const canvas = document.querySelector("#globe");
+if (!canvas) {
+    throw new Error("Unable to find a canvas with ID 'globe'!");
+}
+
+// Add our 3D object to the DOM
+const renderer = new THREE.WebGL1Renderer({
+    antialias: true,
+    canvas,
+});
 
 // Set the size of our 3D object to window width and height
-renderer.setSize(innerWidth, innerHeight);
+renderer.setSize(globeContainer.offsetWidth, globeContainer.offsetHeight);
 
 // Set the pixel ratio to match our device for greater clarity
 renderer.setPixelRatio(window.devicePixelRatio);
