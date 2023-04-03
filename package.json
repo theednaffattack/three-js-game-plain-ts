@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "simple": "pnpm --filter simple-game run serve:dev",
+    "simple": "pnpm --filter cube-game run serve:dev",
     "globe": "pnpm --filter globe run serve:dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
