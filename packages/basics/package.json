@@ -1,27 +1,27 @@
 {
-  "name": "basics",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite --host",
-    "build": "tsc && vite build",
-    "preview": "vite preview --host"
-  },
-  "prettier": {
-    "trailingComma": "es5",
-    "tabWidth": 4,
-    "semi": true,
-    "singleQuote": false
-  },
-  "devDependencies": {
-    "@types/three": "^0.150.0",
-    "prettier": "^2.8.7",
-    "typescript": "^4.9.3",
-    "vite": "^4.2.0"
-  },
-  "dependencies": {
-    "three": "^0.151.0",
-    "three-full": "^28.0.2"
-  }
+    "name": "basics",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "serve:dev": "vite --host",
+        "build": "tsc && vite build",
+        "preview": "vite preview --host"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": true,
+        "singleQuote": false
+    },
+    "devDependencies": {
+        "@types/three": "^0.150.0",
+        "prettier": "^2.8.7",
+        "typescript": "^4.9.3",
+        "vite": "^4.2.0"
+    },
+    "dependencies": {
+        "three": "^0.151.0",
+        "three-full": "^28.0.2"
+    }
 }
