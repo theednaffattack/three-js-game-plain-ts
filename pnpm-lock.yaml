@@ -5,8 +5,44 @@ importers:
   .:
     specifiers: {}
 
+  packages/basics:
+    specifiers:
+      '@types/three': ^0.150.0
+      prettier: ^2.8.7
+      three: ^0.151.0
+      three-full: ^28.0.2
+      typescript: ^4.9.3
+      vite: ^4.2.0
+    dependencies:
+      three: 0.151.2
+      three-full: 28.0.2
+    devDependencies:
+      '@types/three': 0.150.0
+      prettier: 2.8.7
+      typescript: 4.9.5
+      vite: 4.2.1
+
   packages/concepts:
     specifiers: {}
+
+  packages/cube-game:
+    specifiers:
+      '@types/three': ^0.150.0
+      prettier: ^2.8.7
+      three: ^0.151.0
+      three-addons: ^1.2.0
+      three-full: ^28.0.2
+      typescript: ^4.9.5
+      vite: ^4.2.0
+    dependencies:
+      three: 0.151.2
+      three-addons: 1.2.0
+      three-full: 28.0.2
+    devDependencies:
+      '@types/three': 0.150.0
+      prettier: 2.8.7
+      typescript: 4.9.5
+      vite: 4.2.1
 
   packages/globe:
     specifiers:
@@ -31,25 +67,6 @@ importers:
 
   packages/shared:
     specifiers: {}
-
-  packages/simple-game:
-    specifiers:
-      '@types/three': ^0.150.0
-      prettier: ^2.8.7
-      three: ^0.151.0
-      three-addons: ^1.2.0
-      three-full: ^28.0.2
-      typescript: ^4.9.5
-      vite: ^4.2.0
-    dependencies:
-      three: 0.151.2
-      three-addons: 1.2.0
-      three-full: 28.0.2
-    devDependencies:
-      '@types/three': 0.150.0
-      prettier: 2.8.7
-      typescript: 4.9.5
-      vite: 4.2.1
 
 packages:
 
