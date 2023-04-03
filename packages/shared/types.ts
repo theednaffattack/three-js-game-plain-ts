@@ -1,3 +1,5 @@
+import type { ColorRepresentation } from "three";
+
 /**Camera with perspective projection. */
 export interface PerspectiveCameraArgs {
   /**Camera frustum vertical field of view. Default value is 50. */
@@ -11,7 +13,7 @@ export interface PerspectiveCameraArgs {
 }
 
 export interface LightArgs {
-  color: THREE.ColorRepresentation;
+  color: ColorRepresentation;
   intensity: number;
 }
 /**
