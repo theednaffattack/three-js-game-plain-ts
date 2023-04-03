@@ -10,6 +10,8 @@ import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 import atmosphereVertexShader from "./shaders/atmosphereVertex.glsl";
 import atmosphereFragmentShader from "./shaders/atmosphereFragment.glsl";
+import { addSphere } from "./add-sphere";
+
 const globeContainer =
     document.querySelector<HTMLDivElement>("#globe-container");
 if (!globeContainer) {
@@ -49,7 +51,7 @@ if (!appDiv) {
 }
 
 // Add our 3D object to the DOM
-appDiv.appendChild(renderer.domElement);
+// appDiv.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
 
@@ -98,28 +100,30 @@ group.add(sphere);
 // Place the group within the scene
 scene.add(group);
 
-const starGeometry = new THREE.BufferGeometry();
-const starMaterial = new THREE.PointsMaterial({
-    color: 0xffffff,
-});
+// const starGeometry = new THREE.BufferGeometry();
+// const starMaterial = new THREE.PointsMaterial({
+//     color: 0xffffff,
+// });
 
-const starVertices = [];
+// const starVertices = [];
 
-for (let index = 0; index < 10_000; index++) {
-    const x = (Math.random() - 0.5) * 2_000;
-    const y = (Math.random() - 0.5) * 2_000;
-    const z = -Math.random() * 2_000;
-    starVertices.push(x, y, z);
-}
+// for (let index = 0; index < 10_000; index++) {
+//     const x = (Math.random() - 0.5) * 2_000;
+//     const y = (Math.random() - 0.5) * 2_000;
+//     const z = -Math.random() * 2_000;
+//     starVertices.push(x, y, z);
+// }
 
-starGeometry.setAttribute(
-    "position",
-    new THREE.Float32BufferAttribute(starVertices, 3)
-);
+// starGeometry.setAttribute(
+//     "position",
+//     new THREE.Float32BufferAttribute(starVertices, 3)
+// );
 
-const stars = new THREE.Points(starGeometry, starMaterial);
+// const stars = new THREE.Points(starGeometry, starMaterial);
 
-scene.add(stars);
+addSphere(scene);
+
+// scene.add(stars);
 
 // Set camera position to be something less than
 // our sphere radius.
