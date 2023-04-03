@@ -1,5 +1,5 @@
 ✔ Create a scene, camera, and renderer @done(23-04-03 10:55)
-☐ Create a plane
+✔ Create a plane @done(23-04-03 15:09)
 ☐ Modify to taste with dat.gui
 ☐ Add hover effect
 ☐ Add HTML and integrate with JS
