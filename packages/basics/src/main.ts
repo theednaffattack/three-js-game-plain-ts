@@ -56,9 +56,10 @@ const planeGeometry = new THREE.PlaneGeometry(
     config.plane.heightSegments
 );
 const planeMaterial = new THREE.MeshPhongMaterial({
-    color: 0xff0000,
+    // color: 0xff0000,
     side: THREE.DoubleSide,
     flatShading: true,
+    vertexColors: true,
 });
 
 const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
