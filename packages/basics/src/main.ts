@@ -1,9 +1,10 @@
 import { PerspectiveCameraParams, PlaneGeometryParams } from "shared/types";
 import * as THREE from "three";
-import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
+import { OrbitControls } from "three-full/sources/controls/OrbitControls";
 
 import { addGui } from "./add-gui";
 import { animate } from "./animate";
+import { handleMouseMove } from "./handle-mouse-move";
 import type { ConfigMouse } from "./local-types";
 import { makeBumpyPlane } from "./make-bumpy-plane";
 import "./style.css";
@@ -23,11 +24,11 @@ const configPlaneGeometry: PlaneGeometryParams = {
 };
 
 const configMouse: ConfigMouse = {
-    x: null,
-    y: null,
+    x: undefined,
+    y: undefined,
 };
 
-const config = {
+export const config = {
     cam: configPerspectiveCamera,
     plane: configPlaneGeometry,
     mouse: configMouse,
@@ -42,20 +43,11 @@ const camera = new THREE.PerspectiveCamera(
 );
 
 const appReference = "#app";
-const app = document.querySelector<HTMLDivElement>(appReference);
+const appDiv = document.querySelector<HTMLDivElement>(appReference);
 
-if (!app) {
+if (!appDiv) {
     throw new Error(`Unable to sense a DOM Element named '${appReference}'!`);
 }
-
-const renderer = new THREE.WebGL1Renderer({
-    antialias: true,
-});
-
-renderer.setSize(app.offsetWidth, app.offsetHeight);
-renderer.setPixelRatio(devicePixelRatio);
-
-app.appendChild(renderer.domElement);
 
 const planeGeometry = new THREE.PlaneGeometry(
     config.plane.width,
@@ -70,13 +62,13 @@ const planeMaterial = new THREE.MeshPhongMaterial({
 });
 
 const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
-scene.add(planeMesh);
 
 // Mutate z-index to make the plane bumpy
 makeBumpyPlane(planeMesh);
 
 // Add dat.Gui interface for easy value changes
 addGui({ planeMesh, config });
+scene.add(planeMesh);
 
 const frontLight = new THREE.DirectionalLight(0xffffff, 1);
 frontLight.position.set(0, 0, 1);
@@ -86,17 +78,22 @@ const backLight = new THREE.DirectionalLight(0xffffff, 1);
 backLight.position.set(0, 0, -1);
 scene.add(backLight);
 
-new OrbitControls(camera, app);
+const renderer = new THREE.WebGL1Renderer({
+    // antialias: true,
+    // canvas,
+});
+renderer.setSize(appDiv.offsetWidth, appDiv.offsetHeight);
+renderer.setPixelRatio(devicePixelRatio);
+appDiv.appendChild(renderer.domElement);
+
+new OrbitControls(camera, appDiv);
 
 camera.position.z = 5;
 
-animate({ scene, camera, renderer });
+animate({ camera, mouse: config.mouse, planeMesh, renderer, scene });
 
 // BEGIN Event Listeners
 
-window.addEventListener("mousemove", handleMouseMove);
-
-function handleMouseMove(evt: MouseEvent) {
-    config.mouse.x = (evt.clientX / innerWidth) * 2 - 1;
-    config.mouse.y = -(evt.clientY / innerHeight) * 2 + 1;
-}
+window.addEventListener("mousemove", (evt) => {
+    handleMouseMove(evt);
+});

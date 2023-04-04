@@ -1,16 +1,34 @@
 import * as THREE from "three";
+import type { Vector2 } from "three";
+
+import type { ConfigMouse } from "./local-types";
 
 interface AnimateArgs {
     camera: THREE.PerspectiveCamera;
+    mouse: ConfigMouse;
+    planeMesh: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshPhongMaterial>;
     scene: THREE.Scene;
     renderer: THREE.WebGL1Renderer;
 }
 
-export function animate({ scene, camera, renderer }: AnimateArgs) {
+export function animate({
+    camera,
+    mouse,
+    planeMesh,
+    renderer,
+    scene,
+}: AnimateArgs) {
+    const raycaster = new THREE.Raycaster();
     const animationId = requestAnimationFrame(() => {
-        animate({ scene, camera, renderer });
+        animate({ camera, mouse, planeMesh, renderer, scene });
     });
     renderer.render(scene, camera);
-    // scene.rotation.x += 0.01;
+
+    raycaster.setFromCamera(mouse as Vector2, camera);
+    const intersects = raycaster.intersectObject(planeMesh);
+
+    if (intersects.length > 0) {
+        console.log("VIEW INTERSECTS", intersects);
+    }
     return animationId;
 }

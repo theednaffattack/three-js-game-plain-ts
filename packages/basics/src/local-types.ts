@@ -1,4 +1,4 @@
 export interface ConfigMouse {
-    x: number | null;
-    y: number | null;
+    x: number | undefined;
+    y: number | undefined;
 }
