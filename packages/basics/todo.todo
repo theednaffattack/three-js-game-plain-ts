@@ -5,7 +5,7 @@
 ☐ Add hover effect
     ✔ Add mousemove eventListener @done(23-04-03 17:55)
     ✔ Normalize mouse coordinates @done(23-04-03 17:55)
-    ☐ Import raycaster
-    ☐ Test for intersects
+    ✔ Import raycaster @done(23-04-04 10:17)
+    ✔ Test for intersects @done(23-04-04 10:17)
     ☐ Based off intersected face, change surrounding vertex colors
 ☐ Add HTML and integrate with JS
