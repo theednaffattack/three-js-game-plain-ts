@@ -30,21 +30,21 @@ export function animate({
 
     if (intersects.length > 0) {
         const { color } = intersects[0].object.geometry.attributes;
-
+        const rgb = { r: 0.1, g: 0.5, b: 1 };
         // vertice 1
-        color.setX(intersects[0].face.a, 0);
-        color.setY(intersects[0].face.a, 0);
-        color.setZ(intersects[0].face.a, 1);
+        color.setX(intersects[0].face.a, rgb.r);
+        color.setY(intersects[0].face.a, rgb.g);
+        color.setZ(intersects[0].face.a, rgb.b);
 
         // vertice 2
-        color.setX(intersects[0].face.b, 0);
-        color.setY(intersects[0].face.b, 0);
-        color.setZ(intersects[0].face.b, 1);
+        color.setX(intersects[0].face.b, rgb.r);
+        color.setY(intersects[0].face.b, rgb.g);
+        color.setZ(intersects[0].face.b, rgb.b);
 
         // vertice 3
-        color.setX(intersects[0].face.c, 0);
-        color.setY(intersects[0].face.c, 0);
-        color.setZ(intersects[0].face.c, 1);
+        color.setX(intersects[0].face.c, rgb.r);
+        color.setY(intersects[0].face.c, rgb.g);
+        color.setZ(intersects[0].face.c, rgb.b);
 
         color.needsUpdate = true;
     }
