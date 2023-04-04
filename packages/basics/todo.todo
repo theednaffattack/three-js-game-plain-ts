@@ -3,4 +3,9 @@
 ✔ Modify to taste with dat.gui @done(23-04-03 17:19)
 ✔ Add orbit controls @done(23-04-03 17:41)
 ☐ Add hover effect
+    ☐ Add mousemove eventListener
+    ☐ Normalize mouse coordinates
+    ☐ Import raycaster
+    ☐ Test for intersects
+    ☐ Based off intersected face, change surrounding vertex colors
 ☐ Add HTML and integrate with JS
