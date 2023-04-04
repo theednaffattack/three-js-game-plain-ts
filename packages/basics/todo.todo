@@ -1,6 +1,6 @@
 ✔ Create a scene, camera, and renderer @done(23-04-03 10:55)
 ✔ Create a plane @done(23-04-03 15:09)
 ✔ Modify to taste with dat.gui @done(23-04-03 17:19)
-☐ Add orbit controls
+✔ Add orbit controls @done(23-04-03 17:41)
 ☐ Add hover effect
 ☐ Add HTML and integrate with JS
