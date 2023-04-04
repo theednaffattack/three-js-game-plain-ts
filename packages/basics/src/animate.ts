@@ -1,3 +1,4 @@
+// @ts-nocheck
 import * as THREE from "three";
 import type { Vector2 } from "three";
 
@@ -28,7 +29,24 @@ export function animate({
     const intersects = raycaster.intersectObject(planeMesh);
 
     if (intersects.length > 0) {
-        console.log("VIEW INTERSECTS", intersects);
+        const { color } = intersects[0].object.geometry.attributes;
+
+        // vertice 1
+        color.setX(intersects[0].face.a, 0);
+        color.setY(intersects[0].face.a, 0);
+        color.setZ(intersects[0].face.a, 1);
+
+        // vertice 2
+        color.setX(intersects[0].face.b, 0);
+        color.setY(intersects[0].face.b, 0);
+        color.setZ(intersects[0].face.b, 1);
+
+        // vertice 3
+        color.setX(intersects[0].face.c, 0);
+        color.setY(intersects[0].face.c, 0);
+        color.setZ(intersects[0].face.c, 1);
+
+        color.needsUpdate = true;
     }
     return animationId;
 }
