@@ -14,4 +14,18 @@ export function makeBumpyPlane(
 
         planeMeshArr[index + 2] = z + Math.random();
     }
+
+    const colors = [];
+    for (
+        let index = 0;
+        index < planeMesh.geometry.attributes.position.count;
+        index++
+    ) {
+        colors.push(1, 0, 0);
+    }
+
+    planeMesh.geometry.setAttribute(
+        "color",
+        new THREE.BufferAttribute(new Float32Array(colors), 3)
+    );
 }
