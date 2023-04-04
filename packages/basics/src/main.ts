@@ -94,9 +94,9 @@ animate({ scene, camera, renderer });
 
 // BEGIN Event Listeners
 
-window.addEventListener("mousemove", (evt) => {});
+window.addEventListener("mousemove", handleMouseMove);
 
 function handleMouseMove(evt: MouseEvent) {
-    config.mouse.x = evt.clientX;
-    config.mouse.y = evt.clientY;
+    config.mouse.x = (evt.clientX / innerWidth) * 2 - 1;
+    config.mouse.y = -(evt.clientY / innerHeight) * 2 + 1;
 }
