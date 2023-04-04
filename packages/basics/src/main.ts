@@ -38,7 +38,7 @@ if (!app) {
     throw new Error(`Unable to sense a DOM Element named '${appReference}'!`);
 }
 
-export const renderer = new THREE.WebGL1Renderer({
+const renderer = new THREE.WebGL1Renderer({
     antialias: true,
 });
 
@@ -76,4 +76,4 @@ new OrbitControls(camera, app);
 
 camera.position.z = 5;
 
-animate({ scene, camera });
+animate({ scene, camera, renderer });
