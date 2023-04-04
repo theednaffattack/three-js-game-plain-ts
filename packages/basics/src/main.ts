@@ -1,5 +1,6 @@
 import { PerspectiveCameraParams, PlaneGeometryParams } from "shared/types";
 import * as THREE from "three";
+import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
 
 import { addGui } from "./add-gui";
 import { animate } from "./animate";
@@ -70,6 +71,8 @@ addGui({ planeMesh, config });
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(0, 0, 1);
 scene.add(light);
+
+new OrbitControls(camera, app);
 
 camera.position.z = 5;
 
