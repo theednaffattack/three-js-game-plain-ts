@@ -1,8 +1,10 @@
-import * as THREE from "three";
 import { PerspectiveCameraParams, PlaneGeometryParams } from "shared/types";
+import * as THREE from "three";
 
-import "./style.css";
+import { addGui } from "./add-gui";
 import { animate } from "./animate";
+import { makeBumpyPlane } from "./make-bumpy-plane";
+import "./style.css";
 
 const configPerspectiveCamera: PerspectiveCameraParams = {
     fov: 75,
@@ -59,16 +61,11 @@ const planeMaterial = new THREE.MeshPhongMaterial({
 const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
 scene.add(planeMesh);
 
-// @ts-ignore
-const planeMeshArr = planeMesh.geometry.attributes.position.array;
+// Mutate z-index to make the plane bumpy
+makeBumpyPlane(planeMesh);
 
-for (let index = 0; index < planeMeshArr.length; index += 3) {
-    const x = planeMeshArr[index];
-    const y = planeMeshArr[index + 1];
-    const z = planeMeshArr[index + 2];
-
-    planeMeshArr[index + 2] = z + Math.random();
-}
+// Add dat.Gui interface for easy value changes
+addGui({ planeMesh, config });
 
 const light = new THREE.DirectionalLight(0xffffff, 1);
 light.position.set(0, 0, 1);
