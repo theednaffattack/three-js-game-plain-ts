@@ -21,7 +21,16 @@ const configPlaneGeometry: PlaneGeometryParams = {
     heightSegments: 10,
 };
 
-const config = { cam: configPerspectiveCamera, plane: configPlaneGeometry };
+const configMouse: ConfigMouse = {
+    x: null,
+    y: null,
+};
+
+const config = {
+    cam: configPerspectiveCamera,
+    plane: configPlaneGeometry,
+    mouse: configMouse,
+};
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
