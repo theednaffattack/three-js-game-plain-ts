@@ -7,7 +7,9 @@ importers:
 
   packages/basics:
     specifiers:
+      '@types/dat.gui': ^0.7.9
       '@types/three': ^0.150.0
+      dat.gui: ^0.7.9
       prettier: ^2.8.7
       shared: workspace:^1.0.0
       three: ^0.151.0
@@ -15,10 +17,12 @@ importers:
       typescript: ^4.9.3
       vite: ^4.2.0
     dependencies:
+      dat.gui: 0.7.9
       shared: link:../shared
       three: 0.151.2
       three-full: 28.0.2
     devDependencies:
+      '@types/dat.gui': 0.7.9
       '@types/three': 0.150.0
       prettier: 2.8.7
       typescript: 4.9.5
@@ -287,6 +291,10 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /@types/dat.gui/0.7.9:
+    resolution: {integrity: sha512-UiqZasQIask5cUwWOO6BgOjP1dNj9ChYtmeAb4WTKs5IJ7ha3ATRTeXY7/TzlmEZznh40lS6Ov5BdNA+tU+fWQ==}
+    dev: true
+
   /@types/estree/1.0.0:
     resolution: {integrity: sha512-WulqXMDUTYAXCjZnk6JtIHPigp55cVtDgDrO2gHRwhyJto21+1zbVCtOYB2L1F9w4qCQ0rOGWBnBe0FNTiEJIQ==}
     dev: true
@@ -307,6 +315,10 @@ packages:
   /@types/webxr/0.5.1:
     resolution: {integrity: sha512-xlFXPfgJR5vIuDefhaHuUM9uUgvPaXB6GKdXy2gdEh8gBWQZ2ul24AJz3foUd8NNKlSTQuWYJpCb1/pL81m1KQ==}
     dev: true
+
+  /dat.gui/0.7.9:
+    resolution: {integrity: sha512-sCNc1OHobc+Erc1HqiswYgHdVNpSJUlk/Hz8vzOCsER7rl+oF/4+v8GXFUyCgtXpoCX6+bnmg07DedLvBLwYKQ==}
+    dev: false
 
   /esbuild/0.17.14:
     resolution: {integrity: sha512-vOO5XhmVj/1XQR9NQ1UPq6qvMYL7QFJU57J5fKBKBKxp17uDt5PgxFDb4A2nEiXhr1qQs4x0F5+66hVVw4ruNw==}
