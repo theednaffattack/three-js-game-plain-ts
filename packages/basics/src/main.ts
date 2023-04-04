@@ -6,7 +6,7 @@ import { addGui } from "./add-gui";
 import { animate } from "./animate";
 import { handleMouseMove } from "./handle-mouse-move";
 import type { ConfigMouse } from "./local-types";
-import { makeBumpyPlane } from "./make-bumpy-plane";
+import { transformPlane } from "./transform-plane";
 import "./style.css";
 
 const configPerspectiveCamera: PerspectiveCameraParams = {
@@ -65,7 +65,7 @@ const planeMaterial = new THREE.MeshPhongMaterial({
 const planeMesh = new THREE.Mesh(planeGeometry, planeMaterial);
 
 // Mutate z-index to make the plane bumpy
-makeBumpyPlane(planeMesh);
+transformPlane(planeMesh);
 
 // Add dat.Gui interface for easy value changes
 addGui({ planeMesh, config });

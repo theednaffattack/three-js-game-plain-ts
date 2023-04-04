@@ -1,6 +1,13 @@
 import * as THREE from "three";
 
-export function makeBumpyPlane(
+export function transformPlane(
+    planeMesh: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshPhongMaterial>
+) {
+    makePlaneBumpy(planeMesh);
+    changePlaneColor(planeMesh);
+}
+
+function makePlaneBumpy(
     planeMesh: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshPhongMaterial>
 ) {
     // @ts-ignore
@@ -14,14 +21,24 @@ export function makeBumpyPlane(
 
         planeMeshArr[index + 2] = z + Math.random();
     }
+}
 
+function changePlaneColor(
+    planeMesh: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshPhongMaterial>
+) {
+    const savedColors = {
+        red: [1, 0, 0],
+        green: [0, 1, 0],
+        blue: [0, 0, 1],
+        darkishBlueColor: [0, 0.19, 0.4],
+    };
     const colors = [];
     for (
         let index = 0;
         index < planeMesh.geometry.attributes.position.count;
         index++
     ) {
-        colors.push(1, 0, 0);
+        colors.push(...savedColors.darkishBlueColor);
     }
 
     planeMesh.geometry.setAttribute(
