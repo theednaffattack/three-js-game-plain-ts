@@ -68,9 +68,13 @@ makeBumpyPlane(planeMesh);
 // Add dat.Gui interface for easy value changes
 addGui({ planeMesh, config });
 
-const light = new THREE.DirectionalLight(0xffffff, 1);
-light.position.set(0, 0, 1);
-scene.add(light);
+const frontLight = new THREE.DirectionalLight(0xffffff, 1);
+frontLight.position.set(0, 0, 1);
+scene.add(frontLight);
+
+const backLight = new THREE.DirectionalLight(0xffffff, 1);
+backLight.position.set(0, 0, -1);
+scene.add(backLight);
 
 new OrbitControls(camera, app);
 
