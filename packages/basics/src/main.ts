@@ -4,6 +4,7 @@ import { OrbitControls } from "three-full/sources/controls/OrbitControls.js";
 
 import { addGui } from "./add-gui";
 import { animate } from "./animate";
+import type { ConfigMouse } from "./local-types";
 import { makeBumpyPlane } from "./make-bumpy-plane";
 import "./style.css";
 
@@ -90,3 +91,12 @@ new OrbitControls(camera, app);
 camera.position.z = 5;
 
 animate({ scene, camera, renderer });
+
+// BEGIN Event Listeners
+
+window.addEventListener("mousemove", (evt) => {});
+
+function handleMouseMove(evt: MouseEvent) {
+    config.mouse.x = evt.clientX;
+    config.mouse.y = evt.clientY;
+}
