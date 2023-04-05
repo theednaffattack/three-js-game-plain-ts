@@ -1,6 +1,7 @@
 // @ts-nocheck
 import * as THREE from "three";
 import type { Vector2 } from "three";
+import gsap from "gsap";
 
 import type { ConfigMouse } from "./local-types";
 
@@ -30,23 +31,48 @@ export function animate({
 
     if (intersects.length > 0) {
         const { color } = intersects[0].object.geometry.attributes;
-        const rgb = { r: 0.1, g: 0.5, b: 1 };
+        const hoverColor = { r: 0.1, g: 0.5, b: 1 };
         // vertice 1
-        color.setX(intersects[0].face.a, rgb.r);
-        color.setY(intersects[0].face.a, rgb.g);
-        color.setZ(intersects[0].face.a, rgb.b);
+        color.setX(intersects[0].face.a, hoverColor.r);
+        color.setY(intersects[0].face.a, hoverColor.g);
+        color.setZ(intersects[0].face.a, hoverColor.b);
 
         // vertice 2
-        color.setX(intersects[0].face.b, rgb.r);
-        color.setY(intersects[0].face.b, rgb.g);
-        color.setZ(intersects[0].face.b, rgb.b);
+        color.setX(intersects[0].face.b, hoverColor.r);
+        color.setY(intersects[0].face.b, hoverColor.g);
+        color.setZ(intersects[0].face.b, hoverColor.b);
 
         // vertice 3
-        color.setX(intersects[0].face.c, rgb.r);
-        color.setY(intersects[0].face.c, rgb.g);
-        color.setZ(intersects[0].face.c, rgb.b);
+        color.setX(intersects[0].face.c, hoverColor.r);
+        color.setY(intersects[0].face.c, hoverColor.g);
+        color.setZ(intersects[0].face.c, hoverColor.b);
 
         color.needsUpdate = true;
+
+        const initialColor = { r: 0, g: 0.19, b: 0.4 };
+        // gsap.fromTo({}, initialColor, { ...hoverColor, onUpdate: () => {} });
+        gsap.to(hoverColor, {
+            r: initialColor.r,
+            g: initialColor.g,
+            b: initialColor.b,
+            onUpdate: () => {
+                // vertice 1
+                color.setX(intersects[0].face.a, hoverColor.r);
+                color.setY(intersects[0].face.a, hoverColor.g);
+                color.setZ(intersects[0].face.a, hoverColor.b);
+
+                // vertice 2
+                color.setX(intersects[0].face.b, hoverColor.r);
+                color.setY(intersects[0].face.b, hoverColor.g);
+                color.setZ(intersects[0].face.b, hoverColor.b);
+
+                // vertice 3
+                color.setX(intersects[0].face.c, hoverColor.r);
+                color.setY(intersects[0].face.c, hoverColor.g);
+                color.setZ(intersects[0].face.c, hoverColor.b);
+                color.needsUpdate = true;
+            },
+        });
     }
     return animationId;
 }
