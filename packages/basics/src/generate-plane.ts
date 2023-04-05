@@ -1,4 +1,5 @@
 import { PlaneGeometry } from "three";
+import { changePlaneColor } from "./transform-plane";
 
 interface GeneratePlaneParams {
     planeMesh: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshPhongMaterial>;
@@ -32,4 +33,6 @@ export function generatePlane({ planeMesh, config }: GeneratePlaneParams) {
 
         planeMeshArr[index + 2] = z + Math.random();
     }
+
+    changePlaneColor(planeMesh);
 }

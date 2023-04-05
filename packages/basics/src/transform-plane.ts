@@ -23,7 +23,7 @@ function makePlaneBumpy(
     }
 }
 
-function changePlaneColor(
+export function changePlaneColor(
     planeMesh: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshPhongMaterial>
 ) {
     const savedColors = {
