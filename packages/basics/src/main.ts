@@ -17,10 +17,10 @@ const configPerspectiveCamera: PerspectiveCameraParams = {
 };
 
 const configPlaneGeometry: PlaneGeometryParams = {
-    width: 5,
-    height: 5,
-    widthSegments: 10,
-    heightSegments: 10,
+    width: 19,
+    height: 19,
+    widthSegments: 17,
+    heightSegments: 17,
 };
 
 const configMouse: ConfigMouse = {
