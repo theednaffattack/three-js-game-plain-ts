@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev": "vite --host",
+    "build": "rimraf ./dist && tsc && vite build",
+    "preview": "vite preview --host"
   },
   "dependencies": {
     "leva": "^0.9.34",
@@ -17,6 +17,7 @@
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
     "@vitejs/plugin-react": "^3.1.0",
+    "rimraf": "^4.4.1",
     "typescript": "^4.9.3",
     "vite": "^4.2.0"
   }
