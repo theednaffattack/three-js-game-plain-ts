@@ -7,6 +7,7 @@ import type { ConfigMouse } from "./local-types";
 
 interface AnimateArgs {
     camera: THREE.PerspectiveCamera;
+    frame: number;
     mouse: ConfigMouse;
     planeMesh: THREE.Mesh<THREE.PlaneGeometry, THREE.MeshPhongMaterial>;
     scene: THREE.Scene;
@@ -15,6 +16,7 @@ interface AnimateArgs {
 
 export function animate({
     camera,
+    frame,
     mouse,
     planeMesh,
     renderer,
@@ -22,11 +24,24 @@ export function animate({
 }: AnimateArgs) {
     const raycaster = new THREE.Raycaster();
     const animationId = requestAnimationFrame(() => {
-        animate({ camera, mouse, planeMesh, renderer, scene });
+        animate({ camera, frame, mouse, planeMesh, renderer, scene });
     });
     renderer.render(scene, camera);
 
     raycaster.setFromCamera(mouse as Vector2, camera);
+
+    frame += 0.01;
+
+    // // This code crashes the computer!!!
+    // const { array, originalPosition } = planeMesh.geometry.attributes.position;
+    // for (let index = 0; index < array.length; index + 3) {
+    //     array[index] = originalPosition[index] + Math.cos(frame);
+
+    //     // if (index === 0) {
+    //     //     console.log(Math.cos(frame));
+    //     // }
+    // }
+
     const intersects = raycaster.intersectObject(planeMesh);
 
     if (intersects.length > 0) {

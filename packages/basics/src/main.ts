@@ -28,8 +28,11 @@ const configMouse: ConfigMouse = {
     y: undefined,
 };
 
-export const config = {
+let frame = 0;
+
+export let config = {
     cam: configPerspectiveCamera,
+    frame,
     plane: configPlaneGeometry,
     mouse: configMouse,
 };
@@ -91,7 +94,14 @@ new OrbitControls(camera, appDiv);
 
 camera.position.z = 5;
 
-animate({ camera, mouse: config.mouse, planeMesh, renderer, scene });
+animate({
+    camera,
+    frame: config.frame,
+    mouse: config.mouse,
+    planeMesh,
+    renderer,
+    scene,
+});
 
 // BEGIN Event Listeners
 
