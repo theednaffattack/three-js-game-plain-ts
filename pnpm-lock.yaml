@@ -10,6 +10,7 @@ importers:
       '@types/dat.gui': ^0.7.9
       '@types/three': ^0.150.0
       dat.gui: ^0.7.9
+      gsap: ^3.11.5
       prettier: ^2.8.7
       shared: workspace:^1.0.0
       three: ^0.151.0
@@ -18,6 +19,7 @@ importers:
       vite: ^4.2.0
     dependencies:
       dat.gui: 0.7.9
+      gsap: 3.11.5
       shared: link:../shared
       three: 0.151.2
       three-full: 28.0.2
