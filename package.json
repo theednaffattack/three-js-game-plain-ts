@@ -7,6 +7,7 @@
     "simple": "pnpm --filter cube-game run serve:dev",
     "globe": "pnpm --filter globe run serve:dev",
     "basics": "pnpm --filter basics run serve:dev",
+    "preview:basics": "pnpm --filter basics run build && pnpm --filter basics run preview",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
