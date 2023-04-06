@@ -6,7 +6,7 @@ export function TopNav() {
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="/link-one">LinkOne</a>
+          <a href="/basic-scene">Basic Scene</a>
         </li>
         <li>
           <a href="/link-two">LinkTwo</a>
