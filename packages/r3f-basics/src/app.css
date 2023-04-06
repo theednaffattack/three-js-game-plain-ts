@@ -1,0 +1,9 @@
+ul.horizontal-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+ul.horizontal-nav li {
+  display: inline-block;
+  list-style-type: none;
+}
