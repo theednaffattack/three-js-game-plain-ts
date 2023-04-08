@@ -8,6 +8,7 @@ import {
 import envmapUrl from "./assets/textures/envmap.hdr";
 import { Track } from "./track";
 import { Ground } from "./ground";
+import { Car } from "./car";
 
 export function Scene() {
   const camera = { fov: 40, position: { x: -6, y: 3.9, z: 6.21 } };
@@ -30,6 +31,7 @@ export function Scene() {
       />
       <Track />
       <Ground />
+      <Car />
     </Suspense>
   );
 }
