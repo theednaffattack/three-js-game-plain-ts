@@ -8,5 +8,5 @@ export default defineConfig({
   build: {
     outDir: "../dist",
   },
-  assetsInclude: ["**/*.hdr"],
+  assetsInclude: ["**/*.hdr", "**/*.glb"],
 });
