@@ -6,6 +6,7 @@ import {
 } from "@react-three/drei";
 //@ts-ignore
 import envmapUrl from "./assets/textures/envmap.hdr";
+import { Ground } from "./ground";
 
 export function Scene() {
   const camera = { fov: 40, position: { x: -6, y: 3.9, z: 6.21 } };
@@ -26,6 +27,7 @@ export function Scene() {
       <OrbitControls
         target={[config.controls.x, config.controls.y, config.controls.z]}
       />
+      <Ground />
     </Suspense>
   );
 }
