@@ -1,14 +1,14 @@
-import { Suspense } from "react";
 import {
   Environment,
   OrbitControls,
   PerspectiveCamera,
 } from "@react-three/drei";
+import { Suspense } from "react";
 //@ts-ignore
 import envmapUrl from "./assets/textures/envmap.hdr";
-import { Track } from "./track";
-import { Ground } from "./ground";
 import { Car } from "./car";
+import { Ground } from "./ground";
+import { Track } from "./track";
 
 export function Scene() {
   const camera = { fov: 40, position: { x: -6, y: 3.9, z: 6.21 } };
