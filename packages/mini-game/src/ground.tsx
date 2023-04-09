@@ -7,8 +7,14 @@ import { BufferAttribute } from "three";
 import gridUri from "./assets/textures/grid.png";
 import groundAoUri from "./assets/textures/ground-ao.png";
 import alphaMapUri from "./assets/textures/alpha-map.png";
+import { usePlane } from "@react-three/cannon";
 
 export function Ground() {
+  const [ref] = usePlane(() => ({
+    type: "Static",
+    rotation: [-Math.PI / 2, 0, 0],
+  }));
+
   const gridMap = useLoader(TextureLoader, gridUri);
   const aoMap = useLoader(TextureLoader, groundAoUri);
   const alphaMap = useLoader(TextureLoader, alphaMapUri);
@@ -21,7 +27,9 @@ export function Ground() {
   }, [gridMap]);
 
   useEffect(() => {
+    // @ts-ignore
     var uvs = meshRef.current.geometry.attributes.uv.array;
+    // @ts-ignore
     meshRef.current.geometry.setAttribute("uv2", new BufferAttribute(uvs, 2));
   }, [meshRef.current]);
 
