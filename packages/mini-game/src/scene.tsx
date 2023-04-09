@@ -3,7 +3,7 @@ import {
   OrbitControls,
   PerspectiveCamera,
 } from "@react-three/drei";
-import { Suspense } from "react";
+import { Suspense, useEffect, useState } from "react";
 //@ts-ignore
 import envmapUrl from "./assets/textures/envmap.hdr";
 import { Car } from "./car";
@@ -14,24 +14,43 @@ export function Scene() {
   const camera = { fov: 40, position: { x: -6, y: 3.9, z: 6.21 } };
   const controls = { x: -2.64, y: -0.71, z: 0.03 };
   const config = { camera, controls };
+
+  const [thirdPerson, setThirdPerson] = useState(true);
+  const [cameraPosition, setCameraPosition] = useState<
+    [number, number, number]
+  >([-6, 3.9, 6.21]);
+
+  useEffect(() => {
+    function handleKeydown(evtk: KeyboardEvent) {
+      if (evtk.key.toLowerCase() === "k") {
+        // random is necessary to trigger a state change
+        if (thirdPerson)
+          setCameraPosition([-6, 3.9, 6.21 + Math.random() * 0.01]);
+        setThirdPerson(!thirdPerson);
+      }
+    }
+
+    addEventListener("keydown", handleKeydown);
+
+    return () => removeEventListener("keydown", handleKeydown);
+  }, [thirdPerson]);
+
   return (
     <Suspense fallback={null}>
       <Environment files={envmapUrl} background />
       <PerspectiveCamera
         makeDefault
-        position={[
-          config.camera.position.x,
-          config.camera.position.y,
-          config.camera.position.z,
-        ]}
+        position={cameraPosition}
         fov={config.camera.fov}
       />
-      <OrbitControls
-        target={[config.controls.x, config.controls.y, config.controls.z]}
-      />
+      {!thirdPerson ? (
+        <OrbitControls
+          target={[config.controls.x, config.controls.y, config.controls.z]}
+        />
+      ) : null}
       <Track />
       <Ground />
-      <Car />
+      <Car thirdPerson={thirdPerson} />
     </Suspense>
   );
 }

@@ -1,5 +1,5 @@
 import { useBox, useRaycastVehicle } from "@react-three/cannon";
-import { useLoader } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
@@ -9,8 +9,9 @@ import { XYZ } from "./local-types";
 import { useControls } from "./use-controls";
 import { useWheels } from "./use-wheels";
 import { WheelDebug } from "./wheel-debug";
+import { Quaternion, Vector3 } from "three";
 
-export function Car() {
+export function Car({ thirdPerson }: { thirdPerson: boolean }) {
   // @ts-ignore
   let mesh = useLoader(GLTFLoader, carUri).scene;
 
@@ -40,6 +41,31 @@ export function Car() {
 
   useControls(vehicleApi, chassisApi);
 
+  useFrame((state) => {
+    if (!thirdPerson) {
+      return;
+    }
+
+    let position = new Vector3(0, 0, 0);
+
+    let quaternion = new Quaternion(0, 0, 0, 0);
+    if (chassisBody.current) {
+      position.setFromMatrixPosition(chassisBody.current?.matrixWorld);
+      quaternion.setFromRotationMatrix(chassisBody.current.matrixWorld);
+    }
+
+    let wDir = new Vector3(0, 0, -1);
+    wDir.applyQuaternion(quaternion);
+    wDir.normalize();
+
+    let cameraPosition = position
+      .clone()
+      .add(wDir.clone().multiplyScalar(-1).add(new Vector3(0, 0.3, 0)));
+
+    state.camera.position.copy(cameraPosition);
+    state.camera.lookAt(position);
+  });
+
   useEffect(() => {
     mesh.scale.set(0.0012, 0.0012, 0.0012);
     mesh.children[0].position.set(-365, -18, -67);
@@ -47,6 +73,7 @@ export function Car() {
   return (
     // @ts-ignore
     <group ref={vehicle} name="vehicle">
+      {/* @ts-ignore */}
       <group ref={chassisBody} name="chassisBody">
         <primitive
           object={mesh}
