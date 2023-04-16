@@ -84,6 +84,7 @@ importers:
       '@types/react-dom': ^18.0.11
       '@types/three': ^0.150.0
       '@vitejs/plugin-react': ^3.1.0
+      joymap: ^2.2.4
       react: ^18.2.0
       react-dom: ^18.2.0
       three: ^0.151.0
@@ -93,6 +94,7 @@ importers:
       '@react-three/cannon': 6.5.2_rsdgg37lwuztz32e77irj63ra4
       '@react-three/drei': 9.64.0_pruawcfdh2ohh6emo6j3xk6z7a
       '@react-three/fiber': 8.12.0_y35v3wwlskpbflngz2nyyvemtu
+      joymap: 2.2.4
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       three: 0.151.2
@@ -1373,6 +1375,10 @@ packages:
       is-extendable: 1.0.1
     dev: false
 
+  /fast-memoize/2.5.2:
+    resolution: {integrity: sha512-Ue0LwpDYErFbmNnZSF0UH6eImUwDmogUO1jyE+JbN2gsQz/jICm1Ve7t9QT0rNSsfJt+Hs4/S3GnsDVjL4HVrw==}
+    dev: false
+
   /fflate/0.6.10:
     resolution: {integrity: sha512-IQrh3lEPM93wVCEczc9SaAOvkmcoQn/G8Bo1e8ZPlY3X3bnAxWaBdvTdvM1hP62iZp0BXWDy4vTAy4fF0+Dlpg==}
 
@@ -1490,6 +1496,14 @@ packages:
     dependencies:
       '@types/react-reconciler': 0.28.2
       react: 18.2.0
+    dev: false
+
+  /joymap/2.2.4:
+    resolution: {integrity: sha512-5N0VMbym49AwrfUz0vD6tE++I50SFjBYtwcJsdgE086GgAraGB2YQFsgVj+cG2fd8eUFmK+8U36Ecud3/UYTRg==}
+    dependencies:
+      '@babel/runtime': 7.21.0
+      fast-memoize: 2.5.2
+      lodash: 4.17.21
     dev: false
 
   /js-tokens/4.0.0:
