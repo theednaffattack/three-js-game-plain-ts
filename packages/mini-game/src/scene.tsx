@@ -10,7 +10,13 @@ import { Car } from "./car";
 import { Ground } from "./ground";
 import { Track } from "./track";
 
-export function Scene() {
+export function Scene({
+  gameStatus,
+  setGameStatus,
+}: {
+  gameStatus: "isPaused" | "isPlaying";
+  setGameStatus: React.Dispatch<React.SetStateAction<"isPaused" | "isPlaying">>;
+}) {
   const camera = { fov: 40, position: { x: -6, y: 3.9, z: 6.21 } };
   const controls = { x: -2.64, y: -0.71, z: 0.03 };
   const config = { camera, controls };
@@ -21,11 +27,13 @@ export function Scene() {
   >([-6, 3.9, 6.21]);
 
   useEffect(() => {
-    function handleKeydown(evtk: KeyboardEvent) {
-      if (evtk.key.toLowerCase() === "k") {
+    function handleKeydown(evt: KeyboardEvent) {
+      if (evt.key.toLowerCase() === "k") {
         // random is necessary to trigger a state change
-        if (thirdPerson)
+        if (thirdPerson) {
           setCameraPosition([-6, 3.9, 6.21 + Math.random() * 0.01]);
+        }
+
         setThirdPerson(!thirdPerson);
       }
     }
@@ -50,7 +58,13 @@ export function Scene() {
       ) : null}
       <Track />
       <Ground />
-      <Car thirdPerson={thirdPerson} />
+      <Car
+        gameStatus={gameStatus}
+        setGameStatus={setGameStatus}
+        setThirdPerson={setThirdPerson}
+        thirdPerson={thirdPerson}
+        setCameraPosition={setCameraPosition}
+      />
     </Suspense>
   );
 }
